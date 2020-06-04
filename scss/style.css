@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #f3e9f1;
+}
+
+/* HEADER */
+.navbar {
+  background-color: #f3e9f1;
+}
+
+.navbar-brand {
+  font-family: 'Finger Paint', cursive;
+}
+
+.navicon {
+  font-size: 2.5rem;
+}
+
+.orinoco {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 400px;
+  background-color: #f3e9f1;
+}
+
+.size {
+  font-size: 7.5rem;
+}
+
+.para {
+  font-size: 1rem;
+}
+
+.brand {
+  font-family: 'Finger Paint', cursive;
+  font-size: 6rem;
+}
+
+h3 {
+  text-align: center;
+}
+
+.icon-Capture-decran-2020-05-26-a-134723-3:before {
+  content: "\e900";
+  margin: 1rem;
+  background: -webkit-gradient(linear, left top, right bottom, from(orange), to(#9162f5));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* FEATURES */
+.feature {
+  background: white;
+}
+
+.features {
+  text-align: center;
+  margin: 3rem;
+}
+
+.icon {
+  color: #c87a5e;
+}
+
+/* PRESENTATION NEW SECTION */
+.jumbotron {
+  height: 800px;
+  background: url(/images/teddy_5.jpg) no-repeat;
+  background-size: 100%;
+}
+
+.new-section p {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.grad {
+  background: -webkit-gradient(linear, left top, right bottom, from(orange), to(#9162f5));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.btn {
+  margin-left: 45%;
+  margin-top: 2rem;
+}
+
+/* PRODUCTS PRESENTATION */
+h4 {
+  text-align: center;
+}
+
+.card {
+  width: 500px;
+  height: 500px;
+  -webkit-box-shadow: 12px 12px 2px 1px #FFE4C4;
+          box-shadow: 12px 12px 2px 1px #FFE4C4;
+  padding: 1.5rem;
+  margin: 1rem;
+}
+
+select {
+  width: auto;
+  border-color: #FFE4C4;
+}
+
+p {
+  padding-top: 0.5rem;
+}
+
+.btn {
+  margin: auto;
+  margin-top: 2rem;
+  border-color: #FFE4C4;
+  color: #FFE4C4;
+  width: 25%;
+}
+
+/* PRODUCTS PAGE */
+/*# sourceMappingURL=style.css.map */

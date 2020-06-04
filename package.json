@@ -4,6 +4,7 @@
   "description": "This is the back end server for Project 5 of the Junior Web Developer path.",
   "main": "server.js",
   "scripts": {
+    "sass": "node-sass -w scss -o css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
