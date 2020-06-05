@@ -68,7 +68,7 @@ h3 {
   -webkit-background-clip: text;
   color: transparent; }
 
-.btn {
+.btn-lg {
   margin-left: 45%;
   margin-top: 2rem; }
 
@@ -82,15 +82,16 @@ h4 {
   box-shadow: 12px 12px 2px 1px #FFE4C4;
   padding: 1.5rem;
   margin: 1rem; }
+  .card .card-text {
+    display: none; }
+  .card p {
+    padding-top: 0.5rem; }
 
 select {
   width: auto;
   border-color: #FFE4C4; }
 
-p {
-  padding-top: 0.5rem; }
-
-.btn {
+.selection {
   margin: auto;
   margin-top: 2rem;
   border-color: #FFE4C4;

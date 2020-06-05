@@ -16,7 +16,6 @@ fetch("http://localhost:3000/api/teddies/")
 .then (function(data){
     let teddies = data
     
-    
     for (let getTeddies of data) {
        
         // Création des div
@@ -61,12 +60,13 @@ fetch("http://localhost:3000/api/teddies/")
         let teddyDescription = createElement("p")
         teddyDescription.innerHTML = "Description : " + " " + getTeddies.description
         append(divCardBody,teddyDescription) 
-        
-    
+
         let buttonInfo = createElement("button")
         buttonInfo.innerHTML = "See more"
+        buttonInfo.setAttribute("id","teddy")
         buttonInfo.classList.add("btn")
         buttonInfo.classList.add("btn-outline-primary")
+        buttonInfo.classList.add("selection")
         
         // append des div
         append(divCol,divCard)
@@ -77,12 +77,15 @@ fetch("http://localhost:3000/api/teddies/")
         console.log(data);
         
     }
+
     
-    
+
+}) 
 
 
 
-})    
+
+
     
 
     
