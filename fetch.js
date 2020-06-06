@@ -39,13 +39,11 @@ fetch("http://localhost:3000/api/teddies/")
         img.src = getTeddies.imageUrl
         append(divCard,img)
         
-
-        let teddyId = createElement("p")
-        teddyId.innerHTML = getTeddies._id
-        teddyId.classList.add("card-text")
-        append(divCardBody,teddyId)
+        // let teddyId = createElement("p")
+        // teddyId.innerHTML = getTeddies._id
+        // teddyId.classList.add("card-text")
+        // append(divCardBody,teddyId)
         
-
         let teddyName = createElement("h5")
         teddyName.innerHTML = getTeddies.name
         teddyName.classList.add("card-title")
@@ -61,44 +59,42 @@ fetch("http://localhost:3000/api/teddies/")
         teddyDescription.innerHTML = "Description : " + " " + getTeddies.description
         append(divCardBody,teddyDescription) 
 
-        let buttonInfo = createElement("button")
+        var buttonInfo = createElement("button")
         buttonInfo.innerHTML = "See more"
-        buttonInfo.setAttribute("id","teddy")
         buttonInfo.classList.add("btn")
         buttonInfo.classList.add("btn-outline-primary")
         buttonInfo.classList.add("selection")
         
+        buttonInfo.addEventListener("click", function(){
+            let id = getTeddies._id
+            console.log(id);
+
+            if (id === "5be9c8541c9d440000665243") {
+                window.location = "products.html"
+            } else {
+                window.location = "https://www.youtube.com"
+            }
+            
+        })
         // append des div
         append(divCol,divCard)
         append(divCard,divCardBody)
         append(divCard,buttonInfo)
         append(container,divCol)
-
-        console.log(data);
         
-    }
+    }    
 
     
-
 }) 
 
 
 
 
 
-    
 
     
 
-
-
-
     
-    
-
-
-
-
 
 
 
