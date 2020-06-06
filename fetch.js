@@ -1,4 +1,6 @@
 
+
+
 function createElement(element){
     return document.createElement(element);
 }
@@ -7,7 +9,8 @@ function append (parent,el){
 }
 
 let container = document.querySelector("#teddiesContainer")
-console.log(container);
+let choosenProduct = document.querySelector("#choosenProduct")
+let idTeddy1 = "5be9c8541c9d440000665243"
 
 
 
@@ -64,28 +67,32 @@ fetch("http://localhost:3000/api/teddies/")
         buttonInfo.classList.add("btn")
         buttonInfo.classList.add("btn-outline-primary")
         buttonInfo.classList.add("selection")
-        
+
         buttonInfo.addEventListener("click", function(){
             let id = getTeddies._id
-            console.log(id);
-
-            if (id === "5be9c8541c9d440000665243") {
+            console.log(id)
+            if (id === idTeddy1) {
                 window.location = "products.html"
-            } else {
-                window.location = "https://www.youtube.com"
             }
-            
         })
+
         // append des div
         append(divCol,divCard)
         append(divCard,divCardBody)
         append(divCard,buttonInfo)
         append(container,divCol)
         
-    }    
-
+    } 
+    
     
 }) 
+
+
+
+
+
+
+    
 
 
 
