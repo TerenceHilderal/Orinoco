@@ -1,6 +1,7 @@
 
 
 
+
 function createElement(element){
     return document.createElement(element);
 }
@@ -9,8 +10,12 @@ function append (parent,el){
 }
 
 let container = document.querySelector("#teddiesContainer")
-let choosenProduct = document.querySelector("#choosenProduct")
+
 let idTeddy1 = "5be9c8541c9d440000665243"
+let idTeddy2 = "5beaa8bf1c9d440000a57d94"
+let idTeddy3 = "5beaaa8f1c9d440000a57d95"
+let idTeddy4 = "5beaabe91c9d440000a57d96"
+let idTeddy5 = "5beaacd41c9d440000a57d97"
 
 
 
@@ -42,11 +47,6 @@ fetch("http://localhost:3000/api/teddies/")
         img.src = getTeddies.imageUrl
         append(divCard,img)
         
-        // let teddyId = createElement("p")
-        // teddyId.innerHTML = getTeddies._id
-        // teddyId.classList.add("card-text")
-        // append(divCardBody,teddyId)
-        
         let teddyName = createElement("h5")
         teddyName.innerHTML = getTeddies.name
         teddyName.classList.add("card-title")
@@ -65,17 +65,18 @@ fetch("http://localhost:3000/api/teddies/")
         var buttonInfo = createElement("button")
         buttonInfo.innerHTML = "See more"
         buttonInfo.classList.add("btn")
-        buttonInfo.classList.add("btn-outline-primary")
+        buttonInfo.classList.add("btn-outline-dark")
         buttonInfo.classList.add("selection")
 
-        buttonInfo.addEventListener("click", function(){
+        buttonInfo.addEventListener("click", function(recupId){
             let id = getTeddies._id
             console.log(id)
-            if (id === idTeddy1) {
-                window.location = "products.html"
-            }
-        })
 
+            document.location.href = "products.html?id="+ getTeddies._id
+              
+        })
+        
+        
         // append des div
         append(divCol,divCard)
         append(divCard,divCardBody)
