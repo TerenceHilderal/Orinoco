@@ -67,32 +67,45 @@ fetch("http://localhost:3000/api/teddies/"+ idTeddies )
             append(teddySelect,option)
             console.log(option);
         }
-        
-        
-        // teddyColors = createElement("option")
-        // teddyColors.innerHTML = teddy.colors
-        // console.log(teddyColors);
 
         addButton = createElement("button")
         addButton.classList.add("btn")
         addButton.classList.add("btn-outline-dark")
         addButton.innerHTML = "Add to cart"
 
+        labelQt = createElement("label")
+        labelQt.setAttribute("for","qt")
+        labelQt.innerHTML = "Quantity  : "
+
+        qtSelect = createElement("select")
+        qtSelect.setAttribute("id","qt")
+        qtSelect.classList.add("qtSelect")
         
+        
+        for (let i = 1; i < 6 ; i++) {
+            let qtChoice = createElement("option") ;
+            qtChoice.innerHTML = i
+            qtChoice.setAttribute("value", "quantity")
+            append(qtSelect,qtChoice)
+        }
+       
+  
     // APPEND DES ELEMENTS CREE A LA DIV QUI DOIT LES ACCUEILLIR
     append(choosenProduct,divCol4)
     append(divCol4,teddyImage)
-    
 
-    
+    // APPEND COL 8
     append(choosenProduct,divCol8)
     append(divCol8,teddyName)
     append(divCol8,teddyDescription)
     append(divCol8,teddyPrice)
     append(divCol8,teddyLabel)
     append(teddyLabel,teddySelect)
-    // append(teddySelect,option)
+    append(divCol8,labelQt)
+    append(divCol8,qtSelect)
+    // append(qtButton,qtChoice)
     append(divCol8,addButton)
+    
 
     
     
