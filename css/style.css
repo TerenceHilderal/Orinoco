@@ -116,6 +116,9 @@ select {
   width: 25%;
   margin-top: 2rem; }
 
+.qtSelect {
+  width: 5%; }
+
 #contact {
   text-align: center;
   padding-top: 2rem; }
