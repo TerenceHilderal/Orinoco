@@ -122,3 +122,7 @@ select {
 #contact {
   text-align: center;
   padding-top: 2rem; }
+
+.inCartImage {
+  width: 50px;
+  height: 50px; }
