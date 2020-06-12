@@ -9,12 +9,14 @@ function append(parent,el) {
     
 }
 
+// recuperation de l'id dans l'url
 const urlParams = new URLSearchParams(window.location.search)
 let idTeddies = urlParams.get("id")
-console.log(idTeddies);
+
 
 
 let choosenProduct = document.querySelector("#choosenProduct")
+
 
 
 fetch("http://localhost:3000/api/teddies/"+ idTeddies )
@@ -22,7 +24,6 @@ fetch("http://localhost:3000/api/teddies/"+ idTeddies )
 .then ( response => response.json())
 .then ( function(data){
     let teddy = data
-    console.log(teddy);
 
     // CREATION DES DIV QUI VONT CONTENIR LES ELEMENTS
 
@@ -40,7 +41,7 @@ fetch("http://localhost:3000/api/teddies/"+ idTeddies )
         teddyName.classList.add("teddyName")
 
         teddyPrice = createElement ("span")
-        teddyPrice.innerHTML = "Price : " +" " + teddy.price + "$"
+        teddyPrice.innerHTML = "Price : " +" " + teddy.price/100 + " $"
         teddyPrice.classList.add("teddyPrice")
 
 
@@ -57,21 +58,32 @@ fetch("http://localhost:3000/api/teddies/"+ idTeddies )
         teddyLabel.setAttribute("for","color")
 
         teddySelect = createElement("select")
-        
+        teddySelect.setAttribute("id","liste")
         
         for (let i = 0; i < teddy.colors.length; i++) {
 
-            let option = createElement("option")
-            let teddyColors = teddy.colors [i];
+            var option = createElement("option")
+            var teddyColors = teddy.colors [i];
+            option.setAttribute("value",teddyColors)
             option.innerHTML = teddyColors
             append(teddySelect,option)
-            console.log(option);
+            
         }
 
         addButton = createElement("button")
         addButton.classList.add("btn")
         addButton.classList.add("btn-outline-dark")
+        addButton.classList.add("add-cart")
         addButton.innerHTML = "Add to cart"
+
+        
+        addButton.addEventListener("click", ()=>{
+            window.location.href = "cart.html?id="+ idTeddies +"&color=" ;   
+        }) 
+        
+        
+
+        // about quantity
 
         labelQt = createElement("label")
         labelQt.setAttribute("for","qt")
@@ -103,11 +115,7 @@ fetch("http://localhost:3000/api/teddies/"+ idTeddies )
     append(teddyLabel,teddySelect)
     append(divCol8,labelQt)
     append(divCol8,qtSelect)
-    // append(qtButton,qtChoice)
     append(divCol8,addButton)
-    
-
-    
     
     
 })

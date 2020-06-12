@@ -1,7 +1,4 @@
 
-
-
-
 function createElement(element){
     return document.createElement(element);
 }
@@ -11,18 +8,10 @@ function append (parent,el){
 
 let container = document.querySelector("#teddiesContainer")
 
-let idTeddy1 = "5be9c8541c9d440000665243"
-let idTeddy2 = "5beaa8bf1c9d440000a57d94"
-let idTeddy3 = "5beaaa8f1c9d440000a57d95"
-let idTeddy4 = "5beaabe91c9d440000a57d96"
-let idTeddy5 = "5beaacd41c9d440000a57d97"
-
-
 
 fetch("http://localhost:3000/api/teddies/")
 .then(response => response.json())
 .then (function(data){
-    let teddies = data
     
     for (let getTeddies of data) {
        
@@ -54,7 +43,7 @@ fetch("http://localhost:3000/api/teddies/")
         
 
         let teddyPrice = createElement ("span")
-        teddyPrice.innerHTML = "Price : " + " " + getTeddies.price +"$" 
+        teddyPrice.innerHTML = "Price : " + " " + getTeddies.price/100 + " $" 
         append(divCardBody,teddyPrice)
         
 
@@ -70,12 +59,9 @@ fetch("http://localhost:3000/api/teddies/")
 
         buttonInfo.addEventListener("click", function(recupId){
             let id = getTeddies._id
-            console.log(id)
-
-            document.location.href = "products.html?id="+ getTeddies._id
+            document.location.href = "product.html?id="+ getTeddies._id
               
         })
-        
         
         // append des div
         append(divCol,divCard)
