@@ -43,6 +43,5 @@ fetch("http://localhost:3000/api/teddies/"+ idTeddies )
     append(tableBody,celDescription)
     append(tableBody,celColor)
     append(tableBody,celPrice)
-    
-    
+      
 })

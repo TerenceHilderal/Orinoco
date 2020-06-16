@@ -55,7 +55,7 @@ h3 {
 /* PRESENTATION NEW SECTION */
 .jumbotron {
   height: 800px;
-  background: url(/images/teddytriste.jpg) no-repeat;
+  background: url(images/teddytriste.jpg) no-repeat;
   background-size: 100%; }
 
 .new-section p {
@@ -124,5 +124,5 @@ select {
   padding-top: 2rem; }
 
 .inCartImage {
-  width: 50px;
-  height: 50px; }
+  width: 60px;
+  height: 60px; }
