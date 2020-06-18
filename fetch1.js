@@ -140,42 +140,55 @@ fetch("http://localhost:3000/api/teddies/"+ idTeddies )
 
     addButton.addEventListener("click", ()=>{
 
-        let cart = [];
+       
+        
+        // create a constructor object
+        function Teddy(name,image,color,quantity,price){
+            this.name = teddy.name,
+            this.image = teddy.imageUrl
+            this.color = teddy.colors
+            this.price = teddy.price
+        }
 
-        let objectTeddy = JSON.stringify({
-            name : teddy.name,
-            description : teddy.description,
-            price : teddy.price,
-            color : teddy.color,
-            img : teddy.imageUrl
-        })
+        let cart =[];
+
+        // if local storage doesn't exist
+
+        let firstLine = new Teddy;
+    
+        cart.push(firstLine);
+    
+        localStorage.setItem("cart",JSON.stringify(cart))
+
+        toggle_text()
+        
+        // let cart = [];
+
+        // let objectTeddy = JSON.stringify({
+        //     name : teddy.name,
+        //     description : teddy.description,
+        //     price : teddy.price,
+        //     color : teddy.color,
+        //     img : teddy.imageUrl
+        // })
 
     
-        cart.push(objectTeddy)
+        // cart.push(objectTeddy)
 
-        console.log(cart);
-
-        
-        localStorage.setItem("Teddy",cart)
-
-        localStorage.getItem("Teddy")
+        // console.log(cart);
 
         
+        // localStorage.setItem("Teddy",cart)
+
+        // localStorage.getItem("Teddy")
+
         
-        toggle_text()
+        
+        
 
         
             
     }) 
-    
-        
-        
-        
-    
-
-    
-       
-    
     
 })
     
