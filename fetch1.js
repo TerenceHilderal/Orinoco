@@ -70,20 +70,16 @@ fetch("http://localhost:3000/api/teddies/"+ idTeddies )
             
         }
 
-        addButton = createElement("button")
-        addButton.classList.add("btn")
-        addButton.classList.add("btn-outline-dark")
-        addButton.classList.add("add-cart")
-        addButton.innerHTML = "Add to cart"
 
-        
-        addButton.addEventListener("click", ()=>{
-            window.location.href = "cart.html?id="+ idTeddies +"&color=" ;   
-        }) 
-        
+        //RETURN BUTTON
+
+        returnLink = createElement ("a")
+        returnLink.classList.add("returnLink")
+        returnLink.innerHTML = "Previous"
+        returnLink.setAttribute("href","index.html")
         
 
-        // about quantity
+        //SELECT QUANTITY
 
         labelQt = createElement("label")
         labelQt.setAttribute("for","qt")
@@ -94,17 +90,27 @@ fetch("http://localhost:3000/api/teddies/"+ idTeddies )
         qtSelect.classList.add("qtSelect")
         
         
-        for (let i = 1; i < 6 ; i++) {
-            let qtChoice = createElement("option") ;
-            qtChoice.innerHTML = i
-            qtChoice.setAttribute("value", "quantity")
-            append(qtSelect,qtChoice)
-        }
-       
-  
+    for (let i = 1; i < 6 ; i++) {
+        let qtChoice = createElement("option") ;
+        qtChoice.textContent = i
+        qtChoice.value = i
+        qtChoice.setAttribute("value", "quantity")
+        append(qtSelect,qtChoice) 
+    }
+
+    // ADD BUTTON
+
+    addButton = createElement("button")
+    addButton.classList.add("btn")
+    addButton.classList.add("btn-outline-dark")
+    addButton.classList.add("add-cart")
+    addButton.setAttribute("onclick" , "toggle_text()")
+    addButton.innerHTML = "Add to cart"
+
     // APPEND DES ELEMENTS CREE A LA DIV QUI DOIT LES ACCUEILLIR
     append(choosenProduct,divCol4)
     append(divCol4,teddyImage)
+    append(divCol4,returnLink)
 
     // APPEND COL 8
     append(choosenProduct,divCol8)
@@ -116,6 +122,59 @@ fetch("http://localhost:3000/api/teddies/"+ idTeddies )
     append(divCol8,labelQt)
     append(divCol8,qtSelect)
     append(divCol8,addButton)
+
+
+
+    // FUNCTIONS FOR ADDING CONTENT TO CART
+
+
+    function toggle_text() {
+            var span = document.getElementById("span_txt");
+        if(span.style.display == "none") {
+             span.style.display = "inline";
+        } else {
+             span.style.display = "none";
+        }
+    }
+    
+
+    addButton.addEventListener("click", ()=>{
+
+        let cart = [];
+
+        let objectTeddy = JSON.stringify({
+            name : teddy.name,
+            description : teddy.description,
+            price : teddy.price,
+            color : teddy.color,
+            img : teddy.imageUrl
+        })
+
+    
+        cart.push(objectTeddy)
+
+        console.log(cart);
+
+        
+        localStorage.setItem("Teddy",cart)
+
+        localStorage.getItem("Teddy")
+
+        
+        
+        toggle_text()
+
+        
+            
+    }) 
+    
+        
+        
+        
+    
+
+    
+       
     
     
 })

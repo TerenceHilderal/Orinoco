@@ -62,6 +62,7 @@ fetch("http://localhost:3000/api/teddies/")
             document.location.href = "product.html?id="+ getTeddies._id
               
         })
+         
         
         // append des div
         append(divCol,divCard)

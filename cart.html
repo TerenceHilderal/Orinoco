@@ -41,7 +41,7 @@
                             <a class="nav-link" href="#about">Products</a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#soft"><i class="fas fa-shopping-cart"></i></a>
+                            <a id = "cart" class="nav-link" href=""> <i class="fas fa-shopping-cart"></i><span>0</span></a>
                         <li class="nav-item">
                             <a class="nav-link" href="#hard">Confirmation</i></a>
                         </li>
@@ -94,12 +94,67 @@
             </table>
     
             <p>Subtotal <span class="subtotal"></span>€</p>
+
+            
     
             <button type="button" id="confirm-command" class="btn btn-outline-dark">Order</button>
+
+    
         </div>
     
+        <!-- Form -->
 
+        <div class="container">
+            <div class="row">
+
+                <form action="" method="post">
+                    <div class="form-group">
+                      <label for="last_name">Last name</label>
+                      <input type="text" class="form-control" id="last_name" placeholder=" Last Name" pattern="^\D*$" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="first_name">Name</label>
+                      <input type="text" class="form-control" id="first_name" placeholder="Name" pattern="^\D*$" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="abc@exemple.com" pattern="^\D*$" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" id="country" placeholder="USA , France, etc..." pattern="^\D*$" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" placeholder=" London,Paris, etc..." pattern="^\D*$" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adress">Adress</label>
+                        <input type="text" class="form-control" id="adress" placeholder=" Charles peguy street" pattern="^\D*$" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zip">Zip code</label>
+                        <input type="" class="form-control" id="zip" placeholder="75000" pattern="^\D*$" required>
+                    </div>
+
+                
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+       
 
     <script src="cart.js"></script>
+
     </body>
 </html>

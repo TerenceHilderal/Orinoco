@@ -61,7 +61,7 @@ h3{
 /* PRESENTATION NEW SECTION */
 .jumbotron{
     height: 800px;
-    background: url(images/teddytriste.jpg) no-repeat;
+    background: url(/images/teddytriste.jpg) no-repeat;
     background-size:100%
 }
 .new-section p{
@@ -81,6 +81,7 @@ h3{
 
 /* PRODUCTS PRESENTATION */
 h4{
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,6 +143,25 @@ select{
 .qtSelect{
     width: 5%;
 }
+
+.returnLink{
+    padding-bottom: 3rem;
+    color: black;
+}
+
+.selection{
+    
+    
+    p{
+        color: red;
+    }
+    a{
+        color: black;
+        text-decoration: none;
+        margin: 1.5rem;
+    }
+}
+
 
 // footer
 #contact{
