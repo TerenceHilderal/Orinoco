@@ -1,194 +1,146 @@
 
-function createElement(element){
-    return document.createElement(element);
-}
+const createElement = element => { return document.createElement(element) }
 
-
-function append(parent,el) {
-    return parent.appendChild(el)
-    
-}
+const append = (parent, el) => { return parent.appendChild(el) }
 
 // recuperation de l'id dans l'url
 const urlParams = new URLSearchParams(window.location.search)
 let idTeddies = urlParams.get("id")
 
-
-
+// la div où seront append les produits
 let choosenProduct = document.querySelector("#choosenProduct")
 
+// initialisation de la variable teddy qui va contenir les data
+let teddy = null;
+
+// init de la cart
+let cart = [];
 
 
-fetch("http://localhost:3000/api/teddies/"+ idTeddies )
+const addTocart = () => {
+    const teddyAdd = {
+        name: teddy.name,
+        image: teddy.imageUrl,
+        color: teddy.colors[0],
+        price: teddy.price,
+    }
+    cart = [...cart, teddyAdd];
 
-.then ( response => response.json())
-.then ( function(data){
-    let teddy = data
-
-    // CREATION DES DIV QUI VONT CONTENIR LES ELEMENTS
-
-    let divCol4 = createElement("div")
-    divCol4.classList.add("col-4")
-
-    let divCol8 = createElement("div")
-    divCol8.classList.add("col-8")
-    divCol8.classList.add("d-flex")
-    divCol8.classList.add("flex-column")
-    
-    // CREATION DES ELEMENTS
-    let teddyName = createElement("h2")
-        teddyName.innerHTML = teddy.name
-        teddyName.classList.add("teddyName")
-
-        teddyPrice = createElement ("span")
-        teddyPrice.innerHTML = "Price : " +" " + teddy.price/100 + " $"
-        teddyPrice.classList.add("teddyPrice")
+    let addedProduct = localStorage.setItem("cart", JSON.stringify(cart))
+}
 
 
+// je verifie si il y a quelque chose dans le local storage :
+const checkStorage = localStorage.getItem("cart")
+const checkStorageParse = JSON.parse(localStorage.getItem("cart"))
+
+// si il y a quelque chose dedans j'ajoute dans cart le contenu de localStorage
+if (checkStorage) {
+    cart = [...checkStorageParse]
+}
+
+
+fetch("http://localhost:3000/api/teddies/" + idTeddies)
+
+    .then(response => response.json())
+    .then(function (data) {
+        teddy = data
+
+        // CREATION DES DIV QUI VONT CONTENIR LES ELEMENTS
+
+        const divCol4 = createElement("div")
+        divCol4.classList.add("col-4")
+
+        const divCol8 = createElement("div")
+        divCol8.classList.add("col-8")
+        divCol8.classList.add("d-flex")
+        divCol8.classList.add("flex-column")
+
+        // CREATION DES ELEMENTS
+        let teddyName = createElement("h2")
+        teddyPrice = createElement("span")
         teddyDescription = createElement("p")
-        teddyDescription.innerHTML = "Description :" +" " + teddy.description
-        teddyDescription.classList.add("teddyDescription")
-
         teddyImage = createElement("img")
-        teddyImage.src = teddy.imageUrl
-        teddyImage.classList.add("teddyImg")
-    
         teddyLabel = createElement("label")
-        teddyLabel.innerHTML = "Colors : "
-        teddyLabel.setAttribute("for","color")
-
         teddySelect = createElement("select")
-        teddySelect.setAttribute("id","liste")
-        
+        returnLink = createElement("a")
+        labelQt = createElement("label")
+        qtSelect = createElement("select")
+        addButton = createElement("button")
+
+        // INNER
+        teddyName.innerHTML = teddy.name
+        teddyPrice.innerHTML = "Price : " + " " + teddy.price / 100 + " $"
+        teddyDescription.innerHTML = "Description :" + " " + teddy.description
+        teddyImage.src = teddy.imageUrl
+        teddyLabel.innerHTML = "Colors : "
+        returnLink.innerHTML = "Previous"
+        labelQt.innerHTML = "Quantity  : "
+        addButton.innerHTML = "Add to cart"
+        // MODIF DES CLASSES
+        teddyName.classList.add("teddyName")
+        teddyPrice.classList.add("teddyPrice")
+        teddyDescription.classList.add("teddyDescription")
+        teddyImage.classList.add("teddyImg")
+        returnLink.classList.add("returnLink")
+        qtSelect.classList.add("qtSelect")
+        addButton.classList.add("btn")
+        addButton.classList.add("btn-outline-dark")
+        addButton.classList.add("add-cart")
+        // AJOUT ATTRIBUTS
+        teddyLabel.setAttribute("for", "color")
+        teddySelect.setAttribute("id", "liste")
+        returnLink.setAttribute("href", "index.html")
+        labelQt.setAttribute("for", "qt")
+        qtSelect.setAttribute("id", "qt")
+
+
         for (let i = 0; i < teddy.colors.length; i++) {
 
             var option = createElement("option")
-            var teddyColors = teddy.colors [i];
-            option.setAttribute("value",teddyColors)
+            var teddyColors = teddy.colors[i];
+            option.setAttribute("value", teddyColors)
             option.innerHTML = teddyColors
-            append(teddySelect,option)
-            
+            append(teddySelect, option)
+
         }
 
+        function selectQuantity() {
 
-        //RETURN BUTTON
-
-        returnLink = createElement ("a")
-        returnLink.classList.add("returnLink")
-        returnLink.innerHTML = "Previous"
-        returnLink.setAttribute("href","index.html")
-        
-
-        //SELECT QUANTITY
-
-        labelQt = createElement("label")
-        labelQt.setAttribute("for","qt")
-        labelQt.innerHTML = "Quantity  : "
-
-        qtSelect = createElement("select")
-        qtSelect.setAttribute("id","qt")
-        qtSelect.classList.add("qtSelect")
-        
-        
-    for (let i = 1; i < 6 ; i++) {
-        let qtChoice = createElement("option") ;
-        qtChoice.textContent = i
-        qtChoice.value = i
-        qtChoice.setAttribute("value", "quantity")
-        append(qtSelect,qtChoice) 
-    }
-
-    // ADD BUTTON
-
-    addButton = createElement("button")
-    addButton.classList.add("btn")
-    addButton.classList.add("btn-outline-dark")
-    addButton.classList.add("add-cart")
-    addButton.setAttribute("onclick" , "toggle_text()")
-    addButton.innerHTML = "Add to cart"
-
-    // APPEND DES ELEMENTS CREE A LA DIV QUI DOIT LES ACCUEILLIR
-    append(choosenProduct,divCol4)
-    append(divCol4,teddyImage)
-    append(divCol4,returnLink)
-
-    // APPEND COL 8
-    append(choosenProduct,divCol8)
-    append(divCol8,teddyName)
-    append(divCol8,teddyDescription)
-    append(divCol8,teddyPrice)
-    append(divCol8,teddyLabel)
-    append(teddyLabel,teddySelect)
-    append(divCol8,labelQt)
-    append(divCol8,qtSelect)
-    append(divCol8,addButton)
-
-
-
-    // FUNCTIONS FOR ADDING CONTENT TO CART
-
-
-    function toggle_text() {
-            var span = document.getElementById("span_txt");
-        if(span.style.display == "none") {
-             span.style.display = "inline";
-        } else {
-             span.style.display = "none";
+            for (let i = 1; i < 6; i++) {
+                let qtChoice = createElement("option");
+                qtChoice.innerHTML = i
+                qtChoice.value = i
+                qtChoice.setAttribute("value", "quantity")
+                append(qtSelect, qtChoice)
+            }
         }
-    }
-    
+        selectQuantity()
 
-    addButton.addEventListener("click", ()=>{
+        // APPEND DES ELEMENTS CREE A LA DIV QUI DOIT LES ACCUEILLIR
+        append(choosenProduct, divCol4)
+        append(divCol4, teddyImage)
+        append(divCol4, returnLink)
 
-       
-        
-        // create a constructor object
-        function Teddy(name,image,color,quantity,price){
-            this.name = teddy.name,
-            this.image = teddy.imageUrl
-            this.color = teddy.colors
-            this.price = teddy.price
-        }
+        // APPEND COL 8
+        append(choosenProduct, divCol8)
+        append(divCol8, teddyName)
+        append(divCol8, teddyDescription)
+        append(divCol8, teddyPrice)
+        append(divCol8, teddyLabel)
+        append(teddyLabel, teddySelect)
+        append(divCol8, labelQt)
+        append(divCol8, qtSelect)
+        append(divCol8, addButton)
 
-        let cart =[];
+        // FUNCTION FOR ADDING CONTENT TO CART
 
-        // if local storage doesn't exist
+        addButton.addEventListener("click", () => {
 
-        let firstLine = new Teddy;
-    
-        cart.push(firstLine);
-    
-        localStorage.setItem("cart",JSON.stringify(cart))
+            addTocart()
 
-        toggle_text()
-        
-        // let cart = [];
+        })
 
-        // let objectTeddy = JSON.stringify({
-        //     name : teddy.name,
-        //     description : teddy.description,
-        //     price : teddy.price,
-        //     color : teddy.color,
-        //     img : teddy.imageUrl
-        // })
 
-    
-        // cart.push(objectTeddy)
+    })
 
-        // console.log(cart);
-
-        
-        // localStorage.setItem("Teddy",cart)
-
-        // localStorage.getItem("Teddy")
-
-        
-        
-        
-
-        
-            
-    }) 
-    
-})
-    
