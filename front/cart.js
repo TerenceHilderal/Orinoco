@@ -11,12 +11,16 @@ const tablebody = document.querySelector("#cart-tablebody")
 const subTotal = document.querySelector(".subtotal")
 const checkout = document.querySelector(".checkout")
 const order = document.querySelector("#order")
+const table = document.querySelector(".table")
+const tr = document.querySelector("tr")
+const td = document.querySelector("td")
 
 
 // je regarde s'il j'ai quelque chose dans mon local storage 
 const yourCart = localStorage.getItem("cart")
-const yourCartParse = JSON.parse(localStorage.getItem("cart"))
 
+
+const yourCartParse = JSON.parse(localStorage.getItem("cart"))
 
 // 
 
@@ -30,47 +34,38 @@ if (yourCartParse === null) {
   append(checkout, fullCart)
 
   for (let i = 0; i < yourCartParse.length; i++) {
+
     const articleInCart = yourCartParse[i];
 
-    const article = createElement("tr")
-    article.innerHTML = articleInCart.name,
-      append(tablebody, article)
+    const row = tablebody.insertRow(0)
+
+    const cellName = row.insertCell(0)
+    cellName.innerHTML = articleInCart.name
+
+    const cellDesc = row.insertCell()
+    cellDesc.innerHTML = articleInCart.description
+
+    const cellColor = row.insertCell()
+    cellColor.innerHTML = articleInCart.color
+
+    const cellPrice = row.insertCell()
+    cellPrice.innerHTML = articleInCart.price / 100
 
     const image = createElement("img")
     image.classList.add("imgInCart")
     image.src = articleInCart.image
-    append(article, image)
+    append(cellName, image)
 
-    const description = createElement("td")
-    description.innerHTML = articleInCart.description
-    append(article, description)
+    const cellDelete = createElement("button")
+    cellDelete.innerHTML = "X"
+    append(row, cellDelete)
 
-    const color = createElement("td")
-    color.innerHTML = articleInCart.color
-    append(article, color)
+    cellDelete.addEventListener("click", () => {
 
-    // const qty = createElement("input")
-    // qty.setAttribute("type", "number")
-    // qty.setAttribute("value", "1")
-    // qty.setAttribute("id", "qty")
-    // qty.setAttribute("min", "1")
-    // qty.setAttribute("max", "10")
-    // append(article, qty)
+      table.deleteRow
+      articleInCart.splice(i, 1)
 
-    const price = createElement("td")
-    price.innerHTML = articleInCart.price / 100
-    price.classList.add("price" + [i])
-    append(article, price)
-
-    const supButon = createElement("button")
-    supButon.innerHTML = "X"
-    append(article, supButon)
-
-    supButon.addEventListener("click", () => {
-      alert("votre article a bien été supprimé")
     })
-
-
     order.addEventListener("click", () => {
       const orderToSend = localStorage.setItem()
     })
