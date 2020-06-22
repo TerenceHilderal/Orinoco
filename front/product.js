@@ -21,6 +21,7 @@ const addTocart = () => {
     const teddyAdd = {
         name: teddy.name,
         image: teddy.imageUrl,
+        description: teddy.description,
         color: teddy.colors[0],
         price: teddy.price,
     }
@@ -55,6 +56,8 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         divCol8.classList.add("col-8")
         divCol8.classList.add("d-flex")
         divCol8.classList.add("flex-column")
+        divButtons = createElement("div")
+
 
         // CREATION DES ELEMENTS
         let teddyName = createElement("h2")
@@ -63,7 +66,7 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         teddyImage = createElement("img")
         teddyLabel = createElement("label")
         teddySelect = createElement("select")
-        returnLink = createElement("a")
+        previousButton = createElement("button")
         labelQt = createElement("label")
         qtSelect = createElement("select")
         addButton = createElement("button")
@@ -74,23 +77,28 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         teddyDescription.innerHTML = "Description :" + " " + teddy.description
         teddyImage.src = teddy.imageUrl
         teddyLabel.innerHTML = "Colors : "
-        returnLink.innerHTML = "Previous"
+        previousButton.innerHTML = "Previous"
         labelQt.innerHTML = "Quantity  : "
         addButton.innerHTML = "Add to cart"
+
         // MODIF DES CLASSES
+        divButtons.classList.add("divButtons")
         teddyName.classList.add("teddyName")
         teddyPrice.classList.add("teddyPrice")
         teddyDescription.classList.add("teddyDescription")
         teddyImage.classList.add("teddyImg")
-        returnLink.classList.add("returnLink")
+        previousButton.classList.add("btn")
+        previousButton.classList.add("btn-outline-dark")
+        previousButton.classList.add("returnLink")
         qtSelect.classList.add("qtSelect")
         addButton.classList.add("btn")
         addButton.classList.add("btn-outline-dark")
         addButton.classList.add("add-cart")
+
         // AJOUT ATTRIBUTS
         teddyLabel.setAttribute("for", "color")
         teddySelect.setAttribute("id", "liste")
-        returnLink.setAttribute("href", "index.html")
+        previousButton.setAttribute("href", "index.html")
         labelQt.setAttribute("for", "qt")
         qtSelect.setAttribute("id", "qt")
 
@@ -102,25 +110,19 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
             option.setAttribute("value", teddyColors)
             option.innerHTML = teddyColors
             append(teddySelect, option)
-
         }
 
-        function selectQuantity() {
-
-            for (let i = 1; i < 6; i++) {
-                let qtChoice = createElement("option");
-                qtChoice.innerHTML = i
-                qtChoice.value = i
-                qtChoice.setAttribute("value", "quantity")
-                append(qtSelect, qtChoice)
-            }
+        for (let i = 1; i < 6; i++) {
+            let qtChoice = createElement("option");
+            qtChoice.innerHTML = i
+            qtChoice.value = i
+            qtChoice.setAttribute("value", "quantity" + i)
+            append(qtSelect, qtChoice)
         }
-        selectQuantity()
 
         // APPEND DES ELEMENTS CREE A LA DIV QUI DOIT LES ACCUEILLIR
         append(choosenProduct, divCol4)
         append(divCol4, teddyImage)
-        append(divCol4, returnLink)
 
         // APPEND COL 8
         append(choosenProduct, divCol8)
@@ -131,7 +133,9 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         append(teddyLabel, teddySelect)
         append(divCol8, labelQt)
         append(divCol8, qtSelect)
-        append(divCol8, addButton)
+        append(divCol8, divButtons)
+        append(divButtons, previousButton)
+        append(divButtons, addButton)
 
         // FUNCTION FOR ADDING CONTENT TO CART
 
@@ -141,6 +145,12 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
 
         })
 
+        // FUNCTION PREVIOUS
 
+        previousButton.addEventListener("click", () => {
+            window.location = ("index.html" + "#ourProducts")
+        })
+    }).catch(() => {
+        alert("ERREUR 404 : PAGE NOT FOUND")
     })
 
