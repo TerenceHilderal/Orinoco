@@ -65,8 +65,6 @@ for (let i = 0; i < yourCartParse.length; i++) {
   total += articleInCart.price / 100
   subTotal.innerHTML = total
 
-
-
   // je mets dans mon tableau products a envoyer a l api les id des produits présents dans mon panier et les stock dans le storage
 
   products = [...products, articleInCart.id]
@@ -87,21 +85,90 @@ for (let i = 0; i < yourCartParse.length; i++) {
 
     // je set le nouveau storage 
     orderStored = localStorage.setItem("products", JSON.stringify(products))
+
+    total -= articleInCart.price / 100
+    subTotal.innerHTML = total
+    console.log(total);
+
   })
   // au clic j'envoie mon array products
   order.addEventListener("click", () => {
     if (products.length === 0) {
       console.log("vous n'avez aucun produit a envoyé");
     } else {
-      console.log("vous avez envoyez " + products);
+      console.table(products);
       console.log(products);
-
     }
   })
 }
 
 
 
+
+// PARTIE FORMULAIRE ************************************************************************************
+const lastName = document.getElementById("last_name")
+const firstName = document.getElementById("first_name")
+const email = document.getElementById("email")
+const city = document.getElementById("city")
+const adress = document.getElementById("adress")
+
+const validLastName = () => {
+  const lastNameReg = new RegExp('^[a-zA-Z-]+', 'g')
+  const testLastName = lastNameReg.test(lastName.value)
+  console.log(testLastName);
+}
+const validFirstName = () => {
+  const nameReg = new RegExp('^[a-zA-Z-]+', 'g')
+  const testName = nameReg.test(name.value)
+  console.log(testName);
+}
+const validEmail = () => {
+  const emailReg = new RegExp('^[a-aA-Z0-9.-_]+[@]{1}[a-aA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g')
+  const emailTest = emailReg.test(email.value)
+  console.log(emailTest);
+}
+const validCity = () => {
+  const cityReg = new RegExp('^[a-zA-Z-]+', 'g')
+  const testCity = cityReg.test(city.value)
+  console.log(testCity);
+}
+
+const validAddress = () => {
+  const adressRef = new RegExp('^[a-zA-Z-]+', 'g') // expression bidon pour tester
+  const adressTest = adressRef.test(adress.value)
+  console.log(adressTest);
+}
+
+// j'écoute ce qu'il se passe 
+lastName.addEventListener("change", () => {
+  validLastName();
+});
+
+firstName.addEventListener("change", () => {
+  validFirstName()
+})
+
+email.addEventListener("change", () => {
+  validEmail()
+})
+
+city.addEventListener("change", () => {
+  validCity()
+})
+
+adress.addEventListener("change", () => {
+  validEmail()
+})
+
+const contact = {
+  lastName: lastName.value,
+  firstName: firstName.value,
+  email: email.value,
+  city: city.value,
+  adress: adress.value
+}
+
+console.log(contact);
 
 
 
