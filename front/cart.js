@@ -113,28 +113,28 @@ const city = document.getElementById("city")
 const adress = document.getElementById("adress")
 
 const validLastName = () => {
-  const lastNameReg = new RegExp('^[a-zA-Z-]+', 'g')
+  const lastNameReg = new RegExp('^[a-zA-Z-]+[a-zA-Z]+$', 'g')
   const testLastName = lastNameReg.test(lastName.value)
   console.log(testLastName);
 }
 const validFirstName = () => {
-  const nameReg = new RegExp('^[a-zA-Z-]+', 'g')
-  const testName = nameReg.test(name.value)
+  const nameReg = new RegExp('^[a-zA-Z-]+[a-zA-Z]+$', 'g')
+  const testName = nameReg.test(firstName.value)
   console.log(testName);
 }
 const validEmail = () => {
-  const emailReg = new RegExp('^[a-aA-Z0-9.-_]+[@]{1}[a-aA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g')
+  const emailReg = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g')
   const emailTest = emailReg.test(email.value)
   console.log(emailTest);
 }
 const validCity = () => {
-  const cityReg = new RegExp('^[a-zA-Z-]+', 'g')
+  const cityReg = new RegExp('^[a-zA-Z- ]+[a-zA-Z ]+$', 'g')
   const testCity = cityReg.test(city.value)
   console.log(testCity);
 }
 
 const validAddress = () => {
-  const adressRef = new RegExp('^[a-zA-Z-]+', 'g') // expression bidon pour tester
+  const adressRef = new RegExp('^[a-zA-Z- ]+[a-zA-Z ]+$', 'g') // expression bidon pour tester
   const adressTest = adressRef.test(adress.value)
   console.log(adressTest);
 }
@@ -168,7 +168,6 @@ const contact = {
   adress: adress.value
 }
 
-console.log(contact);
 
 
 
