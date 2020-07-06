@@ -41,6 +41,11 @@ h3 {
   -webkit-background-clip: text;
   color: transparent; }
 
+#contact {
+  display: flex;
+  justify-content: center;
+  background: white; }
+
 /* FEATURES */
 .feature {
   background: white; }
@@ -134,16 +139,37 @@ select {
   padding-top: 1rem; }
 
 table {
+  width: 400px;
   background-color: white;
   padding: 1rem; }
   table th {
     width: 200px;
     padding: 1rem; }
-
-#contact {
-  text-align: center;
-  padding-top: 2rem; }
+  table td button {
+    margin-left: 40%; }
 
 .inCartImage {
   width: 60px;
   height: 60px; }
+
+#order {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.form-group.error input {
+  border: 1px solid red; }
+
+.form-group .error label {
+  color: red; }
+
+.form-group.error::after {
+  content: 'Invalid input, please try again';
+  display: block;
+  color: red;
+  padding: 5px 0;
+  font-size: .9rem; }
+
+#contact {
+  text-align: center;
+  padding-top: 2rem; }

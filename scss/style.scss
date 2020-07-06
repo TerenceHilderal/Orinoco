@@ -44,7 +44,13 @@ h3{
     -webkit-background-clip: text;
     color: transparent; 
 }
+// FOOTER
 
+#contact{
+    display: flex;
+    justify-content: center;
+    background: white;  
+}
 /* FEATURES */
 
 .feature{
@@ -162,23 +168,54 @@ select{
 }
 
 table{
+    width: 400px;
     background-color: white;
     padding: 1rem;
         th{
             width: 200px;
             padding: 1rem;
         }
+        td{
+            button{
+                margin-left: 40%;
+            }
+        }
 }
 
-// footer
-#contact{
-    text-align: center;
-    padding-top: 2rem;
-}
-
-// cart
+// #showform{
+//     display: none;
+// }
+// ***********************************CART***********************************************************
 
 .inCartImage{
     width: 60px;
     height: 60px;
+}
+#order{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// FORM VALIDATION
+.form-group.error input {
+    border: 1px solid red;
+}
+.form-group{
+    .error label{
+        color: red;
+    }
+}
+
+.form-group.error::after {
+    content: 'Invalid input, please try again';
+    display: block;
+    color: red;
+    padding: 5px 0;
+    font-size: .9rem;
+}
+// footer
+#contact{
+    text-align: center;
+    padding-top: 2rem;
 }

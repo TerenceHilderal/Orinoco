@@ -53,7 +53,7 @@
                     <li class="nav-item">
                         <a id="cart" class="nav-link" href=""> <i class="fas fa-shopping-cart"></i><span>0</span></a>
                     <li class="nav-item">
-                        <a class="nav-link" href="#hard">Confirmation</i></a>
+                        <a class="nav-link" href="confirm.html">Confirmation</i></a>
                     </li>
                 </ul>
             </div>
@@ -91,7 +91,7 @@
         <h4 class="checkout"></h4>
 
         <!-- Table command -->
-        <div class="container">
+        <div id="hideafterconfirmation" class="container">
             <table class="table">
                 <thead>
                     <tr>
@@ -109,23 +109,25 @@
 
             <p>Subtotal <span class="subtotal"></span>$</p>
 
-            <button type="button" id="order" class="btn btn-outline-dark">Order</button>
+            <button type="button" id="order" class="btn btn-outline-dark">Confirm your command</button>
         </div>
 
         <!-- Form -->
 
-        <div class="container">
-            <div class="rname">
+        <div class="container" id="showform">
+            <div class="name">
 
-                <form action="" method="post">
+                <form action="" method="post" id="orderForm">
                     <div class="form-group">
                         <label for="last_name">Last name</label>
-                        <input type="text" class="form-control" id="last_name" placeholder=" Last Name" required>
+                        <input type="text" class="form-control" id="last_name" placeholder=" Last Name" pattern="^\D*$"
+                            required>
                     </div>
 
                     <div class="form-group">
                         <label for="first_name">Name</label>
-                        <input type="text" class="form-control" id="first_name" placeholder="Name" required>
+                        <input type="text" class="form-control" id="first_name" placeholder="Name" pattern="^\D*$"
+                            required>
                     </div>
 
                     <div class="form-group">
@@ -136,25 +138,31 @@
 
                     <div class="form-group">
                         <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" placeholder=" London,Paris, etc..." required>
+                        <input type="text" class="form-control" id="city" placeholder=" London,Paris, etc..."
+                            pattern="^\D*$" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="adress">Adress</label>
-                        <input type="text" class="form-control" id="adress" placeholder=" Charles peguy street"
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder=" Charles peguy street"
                             required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Submit</button>
                 </form>
 
             </div>
         </div>
+
+        <footer id="contact">
+            <i class="icon-footer fab fa-twitter fa-2x"></i>
+            <i class="icon-footer fab fa-facebook-f fa-2x"></i>
+            <i class="icon-footer fab fa-instagram fa-2x"></i>
+            <i class="icon-footer fas fa-envelope-square fa-2x"></i>
+        </footer>
 
         <script src="front/cart.js"></script>
 
 </body>
 
 </html>
-
-pattern="^\D*$"

@@ -19,8 +19,8 @@ let cart = [];
 
 const addTocart = () => {
     const teddyAdd = {
-        name: teddy.name,
         id: teddy._id,
+        name: teddy.name,
         image: teddy.imageUrl,
         description: teddy.description,
         color: teddy.colors[0],
