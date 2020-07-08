@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
   background-color: #f3e9f1; }
 
 /* HEADER */
@@ -18,7 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  height: 200px;
   background-color: #f3e9f1; }
 
 .size {
@@ -59,9 +58,10 @@ h3 {
 
 /* PRESENTATION NEW SECTION */
 .jumbotron {
-  height: 800px;
+  height: 500px;
   background: url(/images/teddytriste.jpg) no-repeat;
-  background-size: 100%; }
+  background-size: 100%;
+  margin: 0; }
 
 .new-section p {
   text-align: center;
