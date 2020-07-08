@@ -12,6 +12,7 @@ const subTotal = document.querySelector(".subtotal")
 const checkout = document.querySelector(".checkout")
 const order = document.querySelector("#order")
 const table = document.querySelector(".table")
+let span = document.getElementById("numberArticle")
 let total = null
 let products = []
 
@@ -27,12 +28,13 @@ const showform = () => show.style.display = "block"
 const yourCart = localStorage.getItem("cart")
 let yourCartParse = JSON.parse(localStorage.getItem("cart")) // tableau d'objet
 
+const emptyCart = createElement("p")
+const fullCart = createElement("p")
+
 if (yourCartParse === null) {
-  const emptyCart = createElement("p")
   emptyCart.innerHTML = " Sorry , your cart is empty"
   append(checkout, emptyCart)
 } else {
-  const fullCart = createElement("p")
   fullCart.innerHTML = " Check your command : "
   append(checkout, fullCart)
 }
@@ -74,8 +76,9 @@ for (let i = 0; i < yourCartParse.length; i++) {
   subTotal.innerHTML = total
 
   // je mets dans mon tableau products a envoyer a l api les id des produits présents dans mon panier et les stock dans le storage
-
   products = [...products, articleInCart.id]
+  // je mets a jour l'indication du nombre d'article
+  span.innerHTML = products.length
 
   // au clic sur mon bouton supprimer je veux que la ligne correspondante soit supprimée
   cellDelete.addEventListener("click", (e) => {
@@ -83,7 +86,8 @@ for (let i = 0; i < yourCartParse.length; i++) {
     // je selectionne et supprime l'élément du dom avec l'id correspondant
     const deletedProduct = document.getElementById(e.target.id)
     deletedProduct.remove()
-
+    // je veux qu'au clic mon span.innerHTML décrémente de 1
+    span.innerHTML--
     // je filtre mon local storage je veux tout sauf le produit que j'ai effacé en cliquant dessus
     const newCart = yourCartParse.filter(stayProduct => stayProduct !== articleInCart)
     // je mets a jour mon storage
@@ -91,15 +95,12 @@ for (let i = 0; i < yourCartParse.length; i++) {
     // je rafraichis ma page 
     location.reload()
 
-    console.table(newCart);
-
     // ici , je filtre mon tableau produit ,tous les produits qui auront un id different de mon target id seront expulsés du tableau
     const newProducts = products.filter(product => product !== e.target.id)
     console.log(newProducts);
 
     products = [...newProducts]
     console.log(products);
-
 
     // calcul du total
     total -= articleInCart.price / 100
@@ -110,12 +111,16 @@ for (let i = 0; i < yourCartParse.length; i++) {
 
 // clic j'envoie mon array products
 
-
 order.addEventListener("click", () => {
   if (products.length === 0) {
-    console.log("vous n'avez aucun produit a envoyé");
+    Swal.fire({
+      title: ' Sorry, your cart is empty, you can\'t confirm your order',
+      icon: 'error',
+      html: 'Don\'t worry you can go back to our home page by clicking <a href = index.html>here </a>',
+      showCloseButton: true,
+      showConfirmButton: false
+    })
   } else {
-    console.log("vous envoyez le produit : " + products);
     hidden()
     showform()
   }
@@ -142,17 +147,16 @@ const checkValidity = (input) => {
     if (!e.target.validity.valid) {
       e.target.parentElement.classList.add('error')
       console.log("pas ok");
-      return false
     }
-  })
 
-  input.addEventListener('input', (e) => {
-    if (e.target.validity.valid) {
-      e.target.parentElement.classList.remove('error')
-      console.log("ok");
-      return true
-    }
-  })
+    input.addEventListener('input', (e) => {
+      if (e.target.validity.valid) {
+        e.target.parentElement.classList.remove('error')
+        console.log("ok")
+      }
+    })
+  }
+  )
 }
 Array.from(inputs).forEach(checkValidity)
 
@@ -190,10 +194,18 @@ orderForm.addEventListener("submit", (e) => {
 
     fetch(urlApi, paramFetch)
       .then(response => response.json())
-      .then(response => console.log(response))
-  }
-  else {
-    console.log("Veuillez remplir correctement les champs ");
+      .then(function (order) {
+
+        let orderConfirmed = {
+          name: contact.lastName + " " + contact.firstName,
+          price: total,
+          orderId: order.orderId
+        }
+
+        let orderStorage = localStorage.setItem("customerOrder", JSON.stringify(orderConfirmed))
+        window.location = "confirm.html"
+
+      })
   }
 })
 

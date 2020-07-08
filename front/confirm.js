@@ -6,31 +6,26 @@ const append = (parent, el) => parent.appendChild(el)
 const greetingUser = document.getElementById("greetingUser")
 
 const getCustomerOrder = JSON.parse(localStorage.getItem("customerOrder"))
-console.log(getCustomerOrder);
 
 const congrats = createElement("h2")
-congrats.innerHTML = " Congratulations for your command " + " " + getCustomerOrder.name + " :"
+congrats.innerHTML = " Congratulations for your order" + " " + getCustomerOrder.name + " :"
 
 const totalOrder = createElement("p")
 totalOrder.innerHTML = "Your total order is : " + getCustomerOrder.price + "$"
 
 const idOrder = createElement("p")
-idOrder.innerHTML = " Your id command is : " + getCustomerOrder.orderId
+idOrder.innerHTML = " Here is your id order : " + getCustomerOrder.orderId
 
-const goBack = createElement("a")
-goBack.innerHTML = "Back to Home page"
+
+const goBack = createElement("p")
+goBack.innerHTML = "You're going to be redirect automaticaly to our home page"
 goBack.style.margin = "auto"
 goBack.setAttribute("href", "index.html")
+setTimeout(function () { window.location = 'index.html'; }, 5000);
 
 append(greetingUser, congrats)
 append(greetingUser, idOrder)
 append(greetingUser, totalOrder)
 append(greetingUser, goBack)
 
-// Swal.fire({
-//   title: 'Error!',
-//   text: 'Do you want to continue',
-//   icon: 'error',
-//   confirmButtonText: 'Cool'
-// })
-swal.fire("Here's a message!")
+

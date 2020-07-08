@@ -7,6 +7,7 @@ function append(parent, el) {
 }
 
 let container = document.querySelector("#teddiesContainer")
+let span = document.getElementById("numberArticle")
 
 
 fetch("http://localhost:3000/api/teddies/")
@@ -74,6 +75,19 @@ fetch("http://localhost:3000/api/teddies/")
 
 
     })
+
+// je récupere dans mon storage pour afficher le nombre de produits dans le panier 
+
+let numberProductsInCart = JSON.parse(localStorage.getItem("cart"))
+// console.log(numberProductsInCart);
+if (!numberProductsInCart) {
+
+    span.innerHTML = 0
+} else {
+    span.innerHTML = numberProductsInCart.length
+}
+
+
 
 
 

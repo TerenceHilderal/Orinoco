@@ -49,7 +49,8 @@ h3{
 #contact{
     display: flex;
     justify-content: center;
-    background: white;  
+    background:plum;  
+    margin-top: 100px;
 }
 /* FEATURES */
 
@@ -182,9 +183,9 @@ table{
         }
 }
 
-// #showform{
-//     display: none;
-// }
+#showform{
+    display: none;
+}
 // ***********************************CART***********************************************************
 
 .inCartImage{
@@ -197,7 +198,7 @@ table{
     margin-right: auto;
 }
 
-// FORM VALIDATION
+//*********************************************************** FORM VALIDATION***********************************************************
 .form-group.error input {
     border: 1px solid red;
 }
@@ -219,3 +220,15 @@ table{
     text-align: center;
     padding-top: 2rem;
 }
+
+
+//*********************************************************** CONFIRMATION PAGE ***********************************************************
+
+#greetingUser{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 30vh;
+    background-color:white;
+    padding: 0.5rem; 
+ }

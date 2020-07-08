@@ -1,7 +1,11 @@
 
-const createElement = element => { return document.createElement(element) }
 
-const append = (parent, el) => { return parent.appendChild(el) }
+const createElement = element => document.createElement(element)
+
+const append = (parent, el) => parent.appendChild(el)
+
+let span = document.getElementById("numberArticle")
+
 
 // recuperation de l'id dans l'url
 const urlParams = new URLSearchParams(window.location.search)
@@ -16,7 +20,6 @@ let teddy = null;
 // init de la cart
 let cart = [];
 
-
 const addTocart = () => {
     const teddyAdd = {
         id: teddy._id,
@@ -30,15 +33,16 @@ const addTocart = () => {
 
     let addedProduct = localStorage.setItem("cart", JSON.stringify(cart))
 }
-
-
 // je verifie si il y a quelque chose dans le local storage :
 const checkStorage = localStorage.getItem("cart")
 const checkStorageParse = JSON.parse(localStorage.getItem("cart"))
 
+// je verifie le storage pour la mise à jour du panier 
+
 // si il y a quelque chose dedans j'ajoute dans cart le contenu de localStorage
 if (checkStorage) {
     cart = [...checkStorageParse]
+    span.innerHTML = cart.length
 }
 
 
@@ -68,8 +72,6 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         teddyLabel = createElement("label")
         teddySelect = createElement("select")
         previousButton = createElement("button")
-        labelQt = createElement("label")
-        qtSelect = createElement("select")
         addButton = createElement("button")
 
         // INNER
@@ -79,7 +81,6 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         teddyImage.src = teddy.imageUrl
         teddyLabel.innerHTML = "Colors : "
         previousButton.innerHTML = "Previous"
-        labelQt.innerHTML = "Quantity  : "
         addButton.innerHTML = "Add to cart"
 
         // MODIF DES CLASSES
@@ -91,7 +92,6 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         previousButton.classList.add("btn")
         previousButton.classList.add("btn-outline-dark")
         previousButton.classList.add("returnLink")
-        qtSelect.classList.add("qtSelect")
         addButton.classList.add("btn")
         addButton.classList.add("btn-outline-dark")
         addButton.classList.add("add-cart")
@@ -100,8 +100,7 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         teddyLabel.setAttribute("for", "color")
         teddySelect.setAttribute("id", "liste")
         previousButton.setAttribute("href", "index.html")
-        labelQt.setAttribute("for", "qt")
-        qtSelect.setAttribute("id", "qt")
+
 
 
         for (let i = 0; i < teddy.colors.length; i++) {
@@ -111,14 +110,6 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
             option.setAttribute("value", teddyColors)
             option.innerHTML = teddyColors
             append(teddySelect, option)
-        }
-
-        for (let i = 1; i < 6; i++) {
-            let qtChoice = createElement("option");
-            qtChoice.innerHTML = i
-            qtChoice.value = i
-            qtChoice.setAttribute("value", "quantity" + i)
-            append(qtSelect, qtChoice)
         }
 
         // APPEND DES ELEMENTS CREE A LA DIV QUI DOIT LES ACCUEILLIR
@@ -132,18 +123,27 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         append(divCol8, teddyPrice)
         append(divCol8, teddyLabel)
         append(teddyLabel, teddySelect)
-        append(divCol8, labelQt)
-        append(divCol8, qtSelect)
         append(divCol8, divButtons)
         append(divButtons, previousButton)
         append(divButtons, addButton)
 
+
         // FUNCTION FOR ADDING CONTENT TO CART
+
 
         addButton.addEventListener("click", () => {
 
             addTocart()
+            console.log(cart.length);
 
+            span.innerHTML = cart.length
+            Swal.fire({
+                title: 'Your product has been added',
+                icon: 'success',
+                html: '<a href ="cart.html">Acces your cart by clicking here</a>',
+                showCloseButton: true,
+                showConfirmButton: false
+            })
         })
 
         // FUNCTION PREVIOUS
@@ -154,4 +154,3 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
     }).catch(() => {
         alert("ERREUR 404 : PAGE NOT FOUND")
     })
-

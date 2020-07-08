@@ -44,7 +44,8 @@ h3 {
 #contact {
   display: flex;
   justify-content: center;
-  background: white; }
+  background: plum;
+  margin-top: 100px; }
 
 /* FEATURES */
 .feature {
@@ -148,6 +149,9 @@ table {
   table td button {
     margin-left: 40%; }
 
+#showform {
+  display: none; }
+
 .inCartImage {
   width: 60px;
   height: 60px; }
@@ -173,3 +177,11 @@ table {
 #contact {
   text-align: center;
   padding-top: 2rem; }
+
+#greetingUser {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  height: 30vh;
+  background-color: white;
+  padding: 0.5rem; }

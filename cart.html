@@ -19,6 +19,10 @@
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
 
+    <!-- sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.15.2/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -51,7 +55,10 @@
                             <a class="nav-link" href="#about">Products</a>
                         </li> -->
                     <li class="nav-item">
-                        <a id="cart" class="nav-link" href=""> <i class="fas fa-shopping-cart"></i><span>0</span></a>
+                        <a class="nav-link" id="cart" href="cart.html"><i class="fas fa-shopping-cart"></i><span
+                                id="numberArticle"></span></a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="confirm.html">Confirmation</i></a>
                     </li>
@@ -109,7 +116,7 @@
 
             <p>Subtotal <span class="subtotal"></span>$</p>
 
-            <button type="button" id="order" class="btn btn-outline-dark">Confirm your command</button>
+            <button type="button" id="order" class="btn btn-outline-dark">Confirm your order</button>
         </div>
 
         <!-- Form -->
