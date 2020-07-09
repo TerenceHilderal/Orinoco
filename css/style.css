@@ -1,8 +1,12 @@
 body {
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   width: 100%;
   background-color: #A593E0; }
+=======
+  background-color: #f3e9f1; }
+>>>>>>> responsive
 
 /************************************************************ HEADER ************************************************************/
 .navbar {
@@ -19,7 +23,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 200px;
+<<<<<<< HEAD
   background-color: #A593E0; }
+=======
+  background-color: #f3e9f1; }
+>>>>>>> responsive
 
 .size {
   font-size: 7.5rem; }
@@ -49,6 +57,7 @@ h3 {
 
 /************************************************************ FEATURES ************************************************************/
 .feature {
+<<<<<<< HEAD
   background: #E0E3DA; }
   .feature .features {
     text-align: center;
@@ -58,6 +67,24 @@ h3 {
       color: #c87a5e; }
 
 /* ***********************************************************PRESENTATION NEW SECTION ************************************************************/
+=======
+  background: white; }
+
+.features {
+  text-align: center;
+  margin: 3rem; }
+
+.icon {
+  color: #c87a5e; }
+
+/* PRESENTATION NEW SECTION */
+.jumbotron {
+  height: 500px;
+  background: url(/images/teddytriste.jpg) no-repeat;
+  background-size: 100%;
+  margin: 0; }
+
+>>>>>>> responsive
 .new-section p {
   text-align: center;
   font-size: 1.5rem;
