@@ -6,7 +6,6 @@ const append = (parent, el) => parent.appendChild(el)
 
 let span = document.getElementById("numberArticle")
 
-
 // recuperation de l'id dans l'url
 const urlParams = new URLSearchParams(window.location.search)
 let idTeddies = urlParams.get("id")
@@ -17,9 +16,11 @@ let choosenProduct = document.querySelector("#choosenProduct")
 // initialisation de la variable teddy qui va contenir les data
 let teddy = null;
 
+// fonction retour
+const previousFunction = () => window.location = ("index.html" + "#ourProducts")
 // init de la cart
 let cart = [];
-
+// ajouter au panier
 const addTocart = () => {
     const teddyAdd = {
         id: teddy._id,
@@ -32,12 +33,20 @@ const addTocart = () => {
     cart = [...cart, teddyAdd];
 
     let addedProduct = localStorage.setItem("cart", JSON.stringify(cart))
+
+    span.innerHTML = cart.length
+    Swal.fire({
+        title: 'Your product has been added',
+        icon: 'success',
+        html: '<a href ="cart.html">Acces your cart by clicking here</a>',
+        showCloseButton: true,
+        showConfirmButton: false
+    })
 }
 // je verifie si il y a quelque chose dans le local storage :
 const checkStorage = localStorage.getItem("cart")
 const checkStorageParse = JSON.parse(localStorage.getItem("cart"))
 
-// je verifie le storage pour la mise à jour du panier 
 
 // si il y a quelque chose dedans j'ajoute dans cart le contenu de localStorage
 if (checkStorage) {
@@ -55,10 +64,10 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         // CREATION DES DIV QUI VONT CONTENIR LES ELEMENTS
 
         const divCol4 = createElement("div")
-        divCol4.classList.add("col-4")
+        divCol4.classList.add("col-lg-4")
 
         const divCol8 = createElement("div")
-        divCol8.classList.add("col-8")
+        divCol8.classList.add("col-lg-8")
         divCol8.classList.add("d-flex")
         divCol8.classList.add("flex-column")
         divButtons = createElement("div")
@@ -101,8 +110,6 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         teddySelect.setAttribute("id", "liste")
         previousButton.setAttribute("href", "index.html")
 
-
-
         for (let i = 0; i < teddy.colors.length; i++) {
 
             var option = createElement("option")
@@ -127,30 +134,17 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         append(divButtons, previousButton)
         append(divButtons, addButton)
 
-
         // FUNCTION FOR ADDING CONTENT TO CART
-
-
         addButton.addEventListener("click", () => {
-
             addTocart()
-            console.log(cart.length);
-
-            span.innerHTML = cart.length
-            Swal.fire({
-                title: 'Your product has been added',
-                icon: 'success',
-                html: '<a href ="cart.html">Acces your cart by clicking here</a>',
-                showCloseButton: true,
-                showConfirmButton: false
-            })
         })
-
         // FUNCTION PREVIOUS
 
         previousButton.addEventListener("click", () => {
-            window.location = ("index.html" + "#ourProducts")
+            previousFunction()
         })
-    }).catch(() => {
+
+    })
+    .catch(() => {
         alert("ERREUR 404 : PAGE NOT FOUND")
     })

@@ -2,13 +2,12 @@ body{
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color:#f3e9f1 ;
-   
+    background-color: #A593E0;
 }
-/* HEADER */
+/************************************************************ HEADER ************************************************************/
 
 .navbar{
-    background-color: #f3e9f1;
+    background-color: #A593E0;
 }
 .navbar-brand{
     font-family: 'Finger Paint', cursive;
@@ -20,8 +19,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 400px;
-    background-color: #f3e9f1;
+    height: 200px;
+    background-color: #A593E0;
 }
 .size{
     font-size: 7.5rem;
@@ -44,63 +43,72 @@ h3{
     -webkit-background-clip: text;
     color: transparent; 
 }
-// FOOTER
+//*********************************************************** FOOTER***********************************************************
 
 #contact{
     display: flex;
     justify-content: center;
-    background:plum;  
+    background:#566270;  
     margin-top: 100px;
 }
-/* FEATURES */
+/************************************************************ FEATURES ************************************************************/
 
 .feature{
-    background: white; 
-}
-.features{
-    text-align: center;
-    margin: 3rem;
-}
-.icon{
-    color:#c87a5e;
+    background: #E0E3DA; 
+    .features{
+        text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        
+        .icon{
+            color:#c87a5e;
+        }
+    }
 }
 
-/* PRESENTATION NEW SECTION */
-.jumbotron{
-    height: 800px;
-    background: url(/images/teddytriste.jpg) no-repeat;
-    background-size:100%
-}
-.new-section p{
-    text-align: center;
-    font-size: 1.5rem;
-    margin-top: 2rem;
+/* ***********************************************************PRESENTATION NEW SECTION ************************************************************/
+.new-section {
+    
+    p{
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+    .jumbotron{
+        height: 500px;
+        background: url(/images/teddytriste.jpg) no-repeat;
+        background-size:100%
+
+    }
 }
 .grad{
     background: -webkit-gradient(linear,left top,right bottom,from(orange),to(#9162f5));
     -webkit-background-clip: text;
     color: transparent; 
 }
+
 .btn-lg{
     margin-left: 45%;
     margin-top: 2rem;
 }
 
-/* PRODUCTS PRESENTATION */
+/************************************************************ PRODUCTS PRESENTATION ************************************************************/
 h4{
     color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100px;
+    font-family: 'Finger Paint', cursive;
 }
 
 .card{
     width: 500px;
     height: 500px;
-    box-shadow: 12px 12px 2px 1px #FFE4C4;
+    box-shadow: 12px 12px 2px 1px #FFFFF3;
     padding: 1.5rem;
-    margin: 1rem;
+    margin: auto;
+    margin-bottom: 3rem;
 
     .card-text{
         display: none;
@@ -110,7 +118,16 @@ h4{
         padding-top: 0.5rem;
     }
 }
+.card-image-top{
+    margin: auto;
+    width: 50%;
+}
 
+#teddiesContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 select{
     width: auto;
     border-color: #FFE4C4;
@@ -119,18 +136,22 @@ select{
 .selection{
     margin: auto;
     margin-top: 2rem;
-    border-color:#FFE4C4 ;
-    color: #FFE4C4;
+    border-color:black;
+    color: black;
     width: 25%;
 }
-/* PRODUCTS PAGE */
+.selection:hover{
+    background:#A593E0 ;
+}
+/************************************************************* PRODUCTS PAGE *************************************************************/
 
 @mixin margin {
     margin-top: 2rem;
 }
 
 #choosenProduct{
-   height: 70vh;
+   height: auto;
+   padding: 2rem;
    background-color:white;
 }
 
@@ -145,6 +166,7 @@ select{
     display: flex;
     justify-content: space-around; 
 }
+
 .btn-outline-dark{
     width: 25%;
     @include margin
@@ -154,12 +176,8 @@ select{
     color: black;
 }
 
-.qtSelect{
-    width: 5%;
-}
 
-
-// CART PAGE
+// ************************************************************CART PAGE************************************************************
 
 .imgInCart{
     width: 60px;

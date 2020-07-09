@@ -1,3 +1,5 @@
+
+
 // let removeCartStorage = localStorage.removeItem("cart")
 const createElement = element => document.createElement(element)
 
@@ -20,8 +22,10 @@ idOrder.innerHTML = " Here is your id order : " + getCustomerOrder.orderId
 const goBack = createElement("p")
 goBack.innerHTML = "You're going to be redirect automaticaly to our home page"
 goBack.style.margin = "auto"
-goBack.setAttribute("href", "index.html")
-setTimeout(function () { window.location = 'index.html'; }, 5000);
+
+
+setTimeout(() => localStorage.clear(), 7000)
+setTimeout(() => window.location = 'index.html', 8000);
 
 append(greetingUser, congrats)
 append(greetingUser, idOrder)

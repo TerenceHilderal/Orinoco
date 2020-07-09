@@ -82,7 +82,6 @@ for (let i = 0; i < yourCartParse.length; i++) {
 
   // au clic sur mon bouton supprimer je veux que la ligne correspondante soit supprimée
   cellDelete.addEventListener("click", (e) => {
-
     // je selectionne et supprime l'élément du dom avec l'id correspondant
     const deletedProduct = document.getElementById(e.target.id)
     deletedProduct.remove()
@@ -94,13 +93,11 @@ for (let i = 0; i < yourCartParse.length; i++) {
     const newCartStored = localStorage.setItem("cart", JSON.stringify(newCart))
     // je rafraichis ma page 
     location.reload()
-
     // ici , je filtre mon tableau produit ,tous les produits qui auront un id different de mon target id seront expulsés du tableau
     const newProducts = products.filter(product => product !== e.target.id)
-    console.log(newProducts);
-
+    // je déverse mon nouveau tableau dans mon tableau produit
     products = [...newProducts]
-    console.log(products);
+
 
     // calcul du total
     total -= articleInCart.price / 100

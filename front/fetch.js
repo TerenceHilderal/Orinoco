@@ -18,7 +18,7 @@ fetch("http://localhost:3000/api/teddies/")
 
             // Création des div
             let divCol = createElement("div")
-            divCol.classList.add("col-6")
+            divCol.classList.add("col-lg-6")
 
 
             let divCard = createElement("div")
@@ -31,8 +31,6 @@ fetch("http://localhost:3000/api/teddies/")
             // création des éléments qui vont être append dans les div
             let img = createElement("img")
             img.classList.add('card-image-top')
-            img.style.margin = "auto"
-            img.style.width = "50%"
             img.setAttribute("alt", "teddies")
             img.src = getTeddies.imageUrl
             append(divCard, img)
@@ -81,7 +79,6 @@ fetch("http://localhost:3000/api/teddies/")
 let numberProductsInCart = JSON.parse(localStorage.getItem("cart"))
 // console.log(numberProductsInCart);
 if (!numberProductsInCart) {
-
     span.innerHTML = 0
 } else {
     span.innerHTML = numberProductsInCart.length
