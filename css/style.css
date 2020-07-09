@@ -125,10 +125,10 @@ select {
 #choosenProduct {
   height: auto;
   padding: 2rem;
-  background-color: white; }
+  background-color: white;
+  box-shadow: 12px 12px 2px 1px #FFFFF3; }
 
 .teddyImg {
-  border: 1px solid black;
   margin: auto;
   width: 100%;
   height: 80%; }
