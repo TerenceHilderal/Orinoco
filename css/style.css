@@ -1,16 +1,14 @@
 body {
   margin: 0;
   padding: 0;
-<<<<<<< HEAD
   width: 100%;
-  background-color: #A593E0; }
-=======
-  background-color: #f3e9f1; }
->>>>>>> responsive
+  height: 100vh;
+  background-color: #FFFFF3; }
 
 /************************************************************ HEADER ************************************************************/
 .navbar {
-  background-color: #A593E0; }
+  background-color: #A593E0;
+  width: 100%; }
 
 .navbar-brand {
   font-family: 'Finger Paint', cursive; }
@@ -23,11 +21,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 200px;
-<<<<<<< HEAD
   background-color: #A593E0; }
-=======
-  background-color: #f3e9f1; }
->>>>>>> responsive
 
 .size {
   font-size: 7.5rem; }
@@ -49,15 +43,18 @@ h3 {
   -webkit-background-clip: text;
   color: transparent; }
 
-#contact {
+.footer {
   display: flex;
   justify-content: center;
+  align-items: center;
   background: #566270;
-  margin-top: 100px; }
+  height: 50px;
+  bottom: 0;
+  position: fixed;
+  width: 100%; }
 
 /************************************************************ FEATURES ************************************************************/
 .feature {
-<<<<<<< HEAD
   background: #E0E3DA; }
   .feature .features {
     text-align: center;
@@ -67,24 +64,6 @@ h3 {
       color: #c87a5e; }
 
 /* ***********************************************************PRESENTATION NEW SECTION ************************************************************/
-=======
-  background: white; }
-
-.features {
-  text-align: center;
-  margin: 3rem; }
-
-.icon {
-  color: #c87a5e; }
-
-/* PRESENTATION NEW SECTION */
-.jumbotron {
-  height: 500px;
-  background: url(/images/teddytriste.jpg) no-repeat;
-  background-size: 100%;
-  margin: 0; }
-
->>>>>>> responsive
 .new-section p {
   text-align: center;
   font-size: 1.5rem;
@@ -116,7 +95,7 @@ h4 {
 .card {
   width: 500px;
   height: 500px;
-  box-shadow: 12px 12px 2px 1px #FFFFF3;
+  box-shadow: 12px 12px 2px 1px #E0E3DA;
   padding: 1.5rem;
   margin: auto;
   margin-bottom: 3rem; }
@@ -132,28 +111,23 @@ h4 {
 #teddiesContainer {
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  margin-bottom: 100px; }
 
 select {
   width: auto;
   border-color: #FFE4C4; }
 
-.selection {
-  margin: auto;
-  margin-top: 2rem;
-  border-color: black;
-  color: black;
-  width: 25%; }
-
-.selection:hover {
-  background: #A593E0; }
+.buttonPosition {
+  display: flex;
+  justify-content: space-around; }
 
 /************************************************************* PRODUCTS PAGE *************************************************************/
 #choosenProduct {
   height: auto;
   padding: 2rem;
   background-color: white;
-  box-shadow: 12px 12px 2px 1px #FFFFF3; }
+  box-shadow: 12px 12px 2px 1px #E0E3DA; }
 
 .teddyImg {
   margin: auto;
@@ -168,8 +142,8 @@ select {
   width: 25%;
   margin-top: 2rem; }
 
-.returnLink {
-  color: black; }
+.btn-outline-dark:hover {
+  background-color: #A593E0; }
 
 .imgInCart {
   width: 60px;
@@ -199,6 +173,25 @@ table {
   margin-left: auto;
   margin-right: auto; }
 
+#hideafterconfirmation {
+  margin-bottom: 100px; }
+
+#orderForm {
+  margin-bottom: 100px; }
+
+#btnSubmit {
+  color: black;
+  border-color: black;
+  background: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%; }
+
+#btnSubmit:hover {
+  background: #A593E0;
+  color: white; }
+
 .form-group.error input {
   border: 1px solid red; }
 
@@ -222,4 +215,7 @@ table {
   margin: auto;
   height: 30vh;
   background-color: white;
-  padding: 0.5rem; }
+  padding: 0.8rem;
+  margin-top: 100px;
+  box-shadow: 12px 12px 2px 2px #E0E3DA;
+  border-radius: 5px; }
