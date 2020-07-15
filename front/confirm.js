@@ -1,6 +1,4 @@
 
-
-// let removeCartStorage = localStorage.removeItem("cart")
 const createElement = element => document.createElement(element)
 
 const append = (parent, el) => parent.appendChild(el)
@@ -19,13 +17,18 @@ const idOrder = createElement("p")
 idOrder.innerHTML = " Here is your id order : " + getCustomerOrder.orderId
 
 
-const goBack = createElement("p")
-goBack.innerHTML = "You're going to be redirect automaticaly to our home page"
+const goBack = createElement("button")
+goBack.innerHTML = "Back to home page"
+goBack.classList.add("confirmGoBack")
+goBack.classList.add("btn")
+goBack.classList.add("btn-outline-dark")
 goBack.style.margin = "auto"
 
+goBack.addEventListener("click", () => {
+  localStorage.clear()
+  window.location = 'index.html' + "#ourProducts"
+})
 
-setTimeout(() => localStorage.clear(), 7000)
-setTimeout(() => window.location = 'index.html', 8000);
 
 append(greetingUser, congrats)
 append(greetingUser, idOrder)

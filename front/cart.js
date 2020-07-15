@@ -1,32 +1,30 @@
 
 
-
 const createElement = element => document.createElement(element)
 
 const append = (parent, el) => parent.appendChild(el)
 
 // je récupère l'élément où vont être affichés mes teddies
-
 const tablebody = document.querySelector("#cart-tablebody")
 const subTotal = document.querySelector(".subtotal")
 const checkout = document.querySelector(".checkout")
 const order = document.querySelector("#order")
 const table = document.querySelector(".table")
-let span = document.getElementById("numberArticle")
+let numberArticle = document.getElementById("numberArticle")
 let total = null
 let products = []
 
 // FONCTIONS
 const hide = document.querySelector("#hideafterconfirmation")
 const hidden = () => hide.style.display = "none"
-const show = document.querySelector("#showform")
-const showform = () => show.style.display = "block"
+const form = document.querySelector("#showform")
+const showform = () => form.style.display = "block"
 
 
-// je regarde s'il j'ai quelque chose dans mon local storage 
+// looking for datas in my localStorage
 
 const yourCart = localStorage.getItem("cart")
-let yourCartParse = JSON.parse(localStorage.getItem("cart")) // tableau d'objet
+let yourCartParse = JSON.parse(localStorage.getItem("cart")) // array of object
 
 const emptyCart = createElement("p")
 const fullCart = createElement("p")
@@ -41,7 +39,7 @@ if (yourCartParse === null) {
 
 for (let i = 0; i < yourCartParse.length; i++) {
 
-  const articleInCart = yourCartParse[i]; // objets
+  const articleInCart = yourCartParse[i]; // object
 
   // je crée mon tableau
   const row = tablebody.insertRow(-1)
@@ -71,42 +69,41 @@ for (let i = 0; i < yourCartParse.length; i++) {
   append(cellPrice, cellDelete)
 
   // TOTAL COST
-
   total += articleInCart.price / 100
   subTotal.innerHTML = total
 
-  // je mets dans mon tableau products a envoyer a l api les id des produits présents dans mon panier et les stock dans le storage
+  // i put in product's array product's id which are going ot be send to the api and stock them  
   products = [...products, articleInCart.id]
-  // je mets a jour l'indication du nombre d'article
-  span.innerHTML = products.length
+  // updating number of article in the cart
+  numberArticle.innerHTML = products.length
 
   // au clic sur mon bouton supprimer je veux que la ligne correspondante soit supprimée
-  cellDelete.addEventListener("click", (e) => {
-    // je selectionne et supprime l'élément du dom avec l'id correspondant
-    const deletedProduct = document.getElementById(e.target.id)
-    deletedProduct.remove()
-    // je veux qu'au clic mon span.innerHTML décrémente de 1
-    span.innerHTML--
-    // je filtre mon local storage je veux tout sauf le produit que j'ai effacé en cliquant dessus
-    const newCart = yourCartParse.filter(stayProduct => stayProduct !== articleInCart)
-    // je mets a jour mon storage
-    const newCartStored = localStorage.setItem("cart", JSON.stringify(newCart))
-    // je rafraichis ma page 
-    location.reload()
-    // ici , je filtre mon tableau produit ,tous les produits qui auront un id different de mon target id seront expulsés du tableau
-    const newProducts = products.filter(product => product !== e.target.id)
-    // je déverse mon nouveau tableau dans mon tableau produit
-    products = [...newProducts]
-
-
-    // calcul du total
-    total -= articleInCart.price / 100
-    subTotal.innerHTML = total
-  })
-
+  const deleteProduct = () => {
+    cellDelete.addEventListener("click", (e) => {
+      // i select the product i want to delete
+      const deletedProduct = document.getElementById(e.target.id)
+      deletedProduct.remove()
+      // updating the number of article in my nav bar
+      numberArticle.innerHTML--
+      // by filtring it's returning an array with all producted excepted the one which i clicked on
+      const newCart = yourCartParse.filter(stayProduct => stayProduct !== articleInCart)
+      // updating my storage
+      const newCartStored = localStorage.setItem("cart", JSON.stringify((newCart)))
+      location.reload()
+      // every products which have a different id's product of i want are ejected of the array
+      const newProducts = products.filter(product => product !== e.target.id)
+      // using spread operator to add my new array to my products array
+      products = [...newProducts]
+      console.log(products);
+      // total cost
+      total -= articleInCart.price / 100
+      subTotal.innerHTML = total
+    })
+  }
+  deleteProduct()
 }
 
-// clic j'envoie mon array products
+// display a message error and show the form if needed
 
 order.addEventListener("click", () => {
   if (products.length === 0) {
@@ -124,8 +121,6 @@ order.addEventListener("click", () => {
 })
 
 
-
-
 // ************************************PARTIE FORMULAIRE ************************************************************************************
 const lastName = document.getElementById("last_name")
 const firstName = document.getElementById("first_name")
@@ -138,39 +133,133 @@ const inputs = document.querySelectorAll("input")
 
 // fonction pour verifier la validité du champs remplis avec l API CONSTRAINT VALIDATION
 
-const checkValidity = (input) => {
-  input.addEventListener('invalid', (e) => {
-    e.preventDefault()
-    if (!e.target.validity.valid) {
-      e.target.parentElement.classList.add('error')
-      console.log("pas ok");
-    }
+// const checkValidity = (input) => {
+//   input.addEventListener('invalid', (e) => {
+//     e.preventDefault()
+//     if (!e.target.validity.valid) {
+//       e.target.parentElement.classList.add('error')
+//       console.log("pas ok");
+//     }
 
-    input.addEventListener('input', (e) => {
-      if (e.target.validity.valid) {
-        e.target.parentElement.classList.remove('error')
-        console.log("ok")
-      }
-    })
+//     input.addEventListener('input', (e) => {
+//       if (e.target.validity.valid) {
+//         e.target.parentElement.classList.remove('error')
+//         console.log("ok")
+//       }
+//     })
+//   }
+//   )
+// }
+// Array.from(inputs).forEach(checkValidity)
+// catch the small element
+// const small = document.getElementsByTagName("small")
+// console.log(small);
+// new RegExp('^[a-zA-Z-¨é]+', 'g')
+
+// creating a regexp and listening changing event on each inputs
+let regexFullName = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
+let regexAddress = /^[0-9]{1,5}( [-a-zA-Zàâäéèêëïîôöùûüç ]+)+$/
+let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+
+// listening event on changement
+orderForm.last_name.addEventListener('change', () => validLastName(this))
+orderForm.first_name.addEventListener('change', () => validFirstName(this))
+orderForm.email.addEventListener('change', () => validEmail(this))
+orderForm.city.addEventListener('change', () => validCity(this))
+orderForm.address.addEventListener('change', () => validAdress(this))
+
+// creating variable to test values of inputs 
+let testLastName
+let testFirstName
+let testEmail
+let testCity
+let testAdress
+
+
+const validLastName = () => {
+  testLastName = regexFullName.test(lastName.value)
+  let small = lastName.nextElementSibling
+  if (testLastName) {
+    small.innerHTML = " valid input"
+    small.classList.remove('text-danger')
+    small.classList.add('text-success')
+  } else {
+    small.innerHTML = " you shouldnt have a number in your first name"
+    small.classList.remove('text-success')
+    small.classList.add('text-danger')
   }
-  )
 }
-Array.from(inputs).forEach(checkValidity)
+const validFirstName = () => {
+  testFirstName = regexFullName.test(firstName.value)
+  let small = firstName.nextElementSibling
+  if (testFirstName) {
+    small.innerHTML = " Valid input"
+    small.classList.remove('text-danger')
+    small.classList.add('text-success')
+  } else {
+    small.innerHTML = " you shouldnt have a number in your first name"
+    small.classList.remove('text-success')
+    small.classList.add('text-danger')
+  }
+}
+const validEmail = () => {
+  testEmail = emailRegExp.test(email.value)
+  let small = email.nextElementSibling
+  if (testEmail) {
+    small.innerHTML = " Valid input"
+    small.classList.remove('text-danger')
+    small.classList.add('text-success')
+  } else {
+    small.innerHTML = " you shouldnt have a number in your first name"
+    small.classList.remove('text-success')
+    small.classList.add('text-danger')
+  }
+}
+const validCity = () => {
+  testCity = regexFullName.test(city.value)
+  let small = city.nextElementSibling
+  if (testCity) {
+    small.innerHTML = " Valid input"
+    small.classList.remove('text-danger')
+    small.classList.add('text-success')
+  } else {
+    small.innerHTML = " you shouldnt have a number in your first name"
+    small.classList.remove('text-success')
+    small.classList.add('text-danger')
+  }
+}
+const validAdress = () => {
+  testAdress = regexAddress.test(address.value)
+  let small = address.nextElementSibling
+  if (testAdress) {
+    small.innerHTML = " Valid input"
+    small.classList.remove('text-danger')
+    small.classList.add('text-success')
+    console.log(testAdress);
+  } else {
+    small.innerHTML = " you shouldnt have a number in your first name"
+    small.classList.remove('text-success')
+    small.classList.add('text-danger')
+  }
+}
 
 // adresse de l'api pour le post
 
 const urlApi = "http://localhost:3000/api/teddies/order"
 
-// on créee l'objet à envoyé à l'api : 
-
-let contact
-
-let orderToSend
+// initializing object to send them to the api
+let contact; let orderToSend
 
 orderForm.addEventListener("submit", (e) => {
-  e.preventDefault()
+  e.preventDefault();
 
-  if (checkValidity) {
+  if (testFirstName == false || !testLastName || !testEmail || !testCity || !testAdress) {
+    e.preventDefault()
+  }
+  else if (contact = "") {
+    e.preventDefault()
+  }
+  else {
 
     contact = {
       lastName: lastName.value,
@@ -180,7 +269,6 @@ orderForm.addEventListener("submit", (e) => {
       address: address.value
     }
     orderToSend = { contact, products }
-    console.log(orderToSend);
 
     // fetch
     let paramFetch = {

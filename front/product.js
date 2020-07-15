@@ -1,26 +1,26 @@
 
 
 const createElement = element => document.createElement(element)
-
+const classElement = (element, class1, class2 = null, class3 = null) => element.classList.add(class1, class2, class3)
 const append = (parent, el) => parent.appendChild(el)
 
-let span = document.getElementById("numberArticle")
 
-// recuperation de l'id dans l'url
+// recover the id in the url
 const urlParams = new URLSearchParams(window.location.search)
 let idTeddies = urlParams.get("id")
 
-// la div où seront append les produits
+// recover the div i need
 let choosenProduct = document.querySelector("#choosenProduct")
+let numberArticle = document.getElementById("numberArticle")
 
-// initialisation de la variable teddy qui va contenir les data
+// init teddy variable which will contain the fetch's datas
 let teddy = null;
 
-// fonction retour
+// function to go back to home page
 const previousFunction = () => window.location = ("index.html" + "#ourProducts")
 // init de la cart
 let cart = [];
-// ajouter au panier
+// function add to cart
 const addTocart = () => {
     const teddyAdd = {
         id: teddy._id,
@@ -32,28 +32,26 @@ const addTocart = () => {
     }
     cart = [...cart, teddyAdd];
 
-    let addedProduct = localStorage.setItem("cart", JSON.stringify(cart))
+    localStorage.setItem("cart", JSON.stringify(cart))
 
-    span.innerHTML = cart.length
+    numberArticle.innerHTML = cart.length
     Swal.fire({
         title: 'Your product has been added',
         icon: 'success',
-        html: '<a href ="cart.html">Acces your cart by clicking here</a>',
+        html: '<a href ="cart.html">Acces your cart by clicking here</a><br><br> <a href =index.html#ourProducts>Or go back to home page</a>',
         showCloseButton: true,
         showConfirmButton: false
     })
 }
-// je verifie si il y a quelque chose dans le local storage :
+// when we came back to a page product : 
 const checkStorage = localStorage.getItem("cart")
 const checkStorageParse = JSON.parse(localStorage.getItem("cart"))
 
-
-// si il y a quelque chose dedans j'ajoute dans cart le contenu de localStorage
+// if there is something in my storage i put it in my cart
 if (checkStorage) {
     cart = [...checkStorageParse]
-    span.innerHTML = cart.length
+    numberArticle.innerHTML = cart.length
 }
-
 
 fetch("http://localhost:3000/api/teddies/" + idTeddies)
 
@@ -61,19 +59,14 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
     .then(function (data) {
         teddy = data
 
-        // CREATION DES DIV QUI VONT CONTENIR LES ELEMENTS
-
         const divCol4 = createElement("div")
-        divCol4.classList.add("col-lg-4")
+        classElement(divCol4, "col-lg-4")
 
         const divCol8 = createElement("div")
-        divCol8.classList.add("col-lg-8")
-        divCol8.classList.add("d-flex")
-        divCol8.classList.add("flex-column")
+        classElement(divCol8, "col-lg-8", "d-flex", "flex-column")
         divButtons = createElement("div")
 
-
-        // CREATION DES ELEMENTS
+        // ELEMENT CREATION
         let teddyName = createElement("h2")
         teddyPrice = createElement("span")
         teddyDescription = createElement("p")
@@ -83,7 +76,7 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         previousButton = createElement("button")
         addButton = createElement("button")
 
-        // INNER
+        // // INNER
         teddyName.innerHTML = teddy.name
         teddyPrice.innerHTML = "Price : " + " " + teddy.price / 100 + " $"
         teddyDescription.innerHTML = "Description :" + " " + teddy.description
@@ -93,21 +86,17 @@ fetch("http://localhost:3000/api/teddies/" + idTeddies)
         addButton.innerHTML = "Add to cart"
 
         // MODIF DES CLASSES
-        divButtons.classList.add("divButtons")
-        teddyName.classList.add("teddyName")
-        teddyPrice.classList.add("teddyPrice")
-        teddyDescription.classList.add("teddyDescription")
-        teddyImage.classList.add("teddyImg")
-        previousButton.classList.add("btn")
-        previousButton.classList.add("btn-outline-dark")
-        previousButton.classList.add("returnLink")
-        addButton.classList.add("btn")
-        addButton.classList.add("btn-outline-dark")
-        addButton.classList.add("add-cart")
+        classElement(divButtons, "divButtons")
+        classElement(teddyName, "teddyName")
+        classElement(teddyPrice, "teddyPrice")
+        classElement(teddyDescription, "teddyDescription")
+        classElement(addButton, "btn", "btn-outline-dark", "add-cart")
+        classElement(teddyImage, "teddyImg")
+        classElement(previousButton, "btn", "btn-outline-dark", "returnLink")
 
         // AJOUT ATTRIBUTS
         teddyLabel.setAttribute("for", "color")
-        teddySelect.setAttribute("id", "liste")
+        classElement(teddySelect, "selectOption")
         previousButton.setAttribute("href", "index.html")
 
         for (let i = 0; i < teddy.colors.length; i++) {
