@@ -38,7 +38,7 @@
     <header>
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#"><span
+            <a class="navbar-brand" href="index.html"><span
                     class="icon-Capture-decran-2020-05-26-a-134723-3 navicon"></span>Orinoco</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Home"
                 aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,124 +51,125 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
-                    <!-- <li class="nav-item">
-                            <a class="nav-link" href="#about">Products</a>
-                        </li> -->
                     <li class="nav-item">
                         <a class="nav-link" id="cart" href="cart.html"><i class="fas fa-shopping-cart"></i><span
                                 id="numberArticle"></span></a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="confirm.html">Confirmation</i></a>
                     </li>
                 </ul>
             </div>
         </nav>
 
+    </header>
 
+    <!-- FEATURES -->
+    <section class="feature d-flex align-items-center container-fluid">
 
-        <!-- FEATURES -->
-        <section class="feature d-flex align-items-center container-fluid">
+        <div class="features col-12">
+            <div class="row">
 
-            <div class="features col-12">
-                <div class="row">
+                <div class="feature-boxes col-lg-4 ">
+                    <i class="icon fas fa-dollar-sign fa-3x"></i> <br> <br>
+                    <h2 class="grad">Chipper</h2>
+                    <p>The best prices on the market</p>
+                </div>
 
-                    <div class="feature-boxes col-lg-4 ">
-                        <i class="icon fas fa-dollar-sign fa-3x"></i> <br> <br>
-                        <h2 class="grad">Chipper</h2>
-                        <p>The best prices on the market</p>
-                    </div>
+                <div class="feature-boxes col-lg-4 ">
+                    <i class="icon fas fa-bullseye fa-3x "></i><br> <br>
+                    <h2 class="grad">Elite Products</h2>
+                    <p>We have all the products, the greatest products.</p>
+                </div>
 
-                    <div class="feature-boxes col-lg-4 ">
-                        <i class="icon fas fa-bullseye fa-3x "></i><br> <br>
-                        <h2 class="grad">Elite Products</h2>
-                        <p>We have all the products, the greatest products.</p>
-                    </div>
-
-                    <div class="feature-boxes col-lg-4 ">
-                        <i class="icon fas fa-truck fa-3x"></i><br> <br>
-                        <h2 class="grad">Fast Delivery</h2>
-                        <p>Delivery within 48 hours</p>
-                    </div>
+                <div class="feature-boxes col-lg-4 ">
+                    <i class="icon fas fa-truck fa-3x"></i><br> <br>
+                    <h2 class="grad">Fast Delivery</h2>
+                    <p>Delivery within 48 hours</p>
                 </div>
             </div>
-        </section>
-
-        <h4 class="checkout"></h4>
-
-        <!-- Table command -->
-        <div id="hideafterconfirmation" class="container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Article</th>
-                        <th>Description</th>
-                        <th>Color</th>
-                        <!-- <th>Quantity</th> -->
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody id="cart-tablebody">
-
-                </tbody>
-            </table>
-
-            <p>Subtotal <span class="subtotal"></span>$</p>
-
-            <button type="button" id="order" class="btn btn-outline-dark">Confirm your order</button>
         </div>
+    </section>
 
-        <!-- Form -->
+    <h4 class="checkout"></h4>
 
-        <div class="container" id="showform">
-            <div class="name">
+    <!-- Table command -->
+    <div id="hideafterconfirmation" class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Article</th>
+                    <th>Description</th>
+                    <th>Color</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="cart-tablebody">
 
-                <form action="" method="post" id="orderForm">
-                    <div class="form-group">
-                        <label for="last_name">Last name</label>
-                        <input type="text" class="form-control" id="last_name" placeholder=" Last Name" pattern="^\D*$"
-                            required>
-                    </div>
+            </tbody>
+        </table>
 
-                    <div class="form-group">
-                        <label for="first_name">Name</label>
-                        <input type="text" class="form-control" id="first_name" placeholder="Name" pattern="^\D*$"
-                            required>
-                    </div>
+        <p>Subtotal <span class="subtotal"></span>$</p>
 
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="abc@exemple.com" required>
-                    </div>
+        <button type="button" id="order" class="btn btn-outline-dark">Confirm your order</button>
+    </div>
+
+    <!-- Form -->
+    <!-- "^\D*$" -->
+    <div class="container" id="showform">
+        <div class="name">
+
+            <form action="" method="post" id="orderForm">
+                <div class="form-group">
+                    <label for="last_name">Last name</label>
+                    <input type="text" class="form-control" id="last_name" placeholder=" Last Name" required>
+                    <small></small>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="first_name">Name</label>
+                    <input type="text" class="form-control" id="first_name" placeholder="Name" required>
+                    <small></small>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="abc@exemple.com" required>
+                    <small></small>
+
+                </div>
 
 
-                    <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" placeholder=" London,Paris, etc..."
-                            pattern="^\D*$" required>
-                    </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder=" London,Paris, etc..."
+                        pattern="^\D*$" required>
+                    <small></small>
 
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" placeholder=" Charles peguy street"
-                            required>
-                    </div>
+                </div>
 
-                    <button type="submit" id="btnSubmit" class="btn btn-primary">Submit</button>
-                </form>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder=" Charles peguy street" required>
+                    <small></small>
 
-            </div>
+                </div>
+
+                <button type="submit" id="btnSubmit" class="btn btn-primary">Submit</button>
+            </form>
+
         </div>
+    </div>
 
-        <footer id="contact">
+    <footer>
+        <div class="footer">
             <i class="icon-footer fab fa-twitter fa-2x"></i>
             <i class="icon-footer fab fa-facebook-f fa-2x"></i>
             <i class="icon-footer fab fa-instagram fa-2x"></i>
             <i class="icon-footer fas fa-envelope-square fa-2x"></i>
-        </footer>
+        </div>
+    </footer>
 
-        <script src="front/cart.js"></script>
+    <script src="front/cart.js"></script>
 
 </body>
 

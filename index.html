@@ -12,6 +12,10 @@
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
 
+    <!-- SWEET ALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.15.2/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+
     <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -36,7 +40,7 @@
     <header>
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#"><span
+            <a class="navbar-brand" href="index.html"><span
                     class="icon-Capture-decran-2020-05-26-a-134723-3 navicon"></span>Orinoco</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Home"
                 aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,15 +53,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
-                    <!-- <li class="nav-item">
-                            <a class="nav-link" href="product.html">Products</a>
-                        </li> -->
                     <li class="nav-item">
                         <a class="nav-link" id="cart" href="cart.html"><i class="fas fa-shopping-cart"></i><span
                                 id="numberArticle"></span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="confirm.html">Confirmation</a>
                     </li>
                 </ul>
             </div>
@@ -71,7 +69,6 @@
             </h1>
         </section>
     </header>
-
 
     <!-- FEATURES -->
     <section class="feature d-flex align-items-center container-fluid-sm">
@@ -123,13 +120,18 @@
     </section>
 
 
-    <footer id="contact">
-        <i class="icon-footer fab fa-twitter fa-2x"></i>
-        <i class="icon-footer fab fa-facebook-f fa-2x"></i>
-        <i class="icon-footer fab fa-instagram fa-2x"></i>
-        <i class="icon-footer fas fa-envelope-square fa-2x"></i>
+    <footer>
+        <div class="footer">
+            <i class="icon-footer fab fa-twitter fa-2x"></i>
+            <i class="icon-footer fab fa-facebook-f fa-2x"></i>
+            <i class="icon-footer fab fa-instagram fa-2x"></i>
+            <i class="icon-footer fas fa-envelope-square fa-2x"></i>
+        </div>
     </footer>
+    <!-- </div>
+    </div> -->
 
+    </div>
 
     <script src="front/fetch.js"></script>
 </body>
