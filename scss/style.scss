@@ -1,17 +1,16 @@
 body{
     margin: 0;
     padding: 0;
-<<<<<<< HEAD
     width: 100%;
-    background-color: #A593E0;
-=======
-    background-color:#f3e9f1 ;
->>>>>>> responsive
+    height: 100vh;
+    background-color: #FFFFF3;
 }
+
 /************************************************************ HEADER ************************************************************/
 
 .navbar{
     background-color: #A593E0;
+    width: 100%;
 }
 .navbar-brand{
     font-family: 'Finger Paint', cursive;
@@ -24,11 +23,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 200px;
-<<<<<<< HEAD
     background-color: #A593E0;
-=======
-    background-color: #f3e9f1;
->>>>>>> responsive
 }
 .size{
     font-size: 7.5rem;
@@ -52,13 +47,17 @@ h3{
     color: transparent; 
 }
 //*********************************************************** FOOTER***********************************************************
-
-#contact{
+.footer{
     display: flex;
     justify-content: center;
-    background:#566270;  
-    margin-top: 100px;
+    align-items: center;
+    background:#566270;
+    height: 50px; 
+    bottom: 0;
+    position: fixed;
+    width: 100%;
 }
+
 /************************************************************ FEATURES ************************************************************/
 
 .feature{
@@ -74,7 +73,6 @@ h3{
     }
 }
 
-<<<<<<< HEAD
 /* ***********************************************************PRESENTATION NEW SECTION ************************************************************/
 .new-section {
     
@@ -89,19 +87,6 @@ h3{
         background-size:100%
 
     }
-=======
-/* PRESENTATION NEW SECTION */
-.jumbotron{
-    height: 500px;
-    background: url(/images/teddytriste.jpg) no-repeat;
-    background-size:100%;
-    margin:0;
-}
-.new-section p{
-    text-align: center;
-    font-size: 1.5rem;
-    margin-top: 2rem;
->>>>>>> responsive
 }
 .grad{
     background: -webkit-gradient(linear,left top,right bottom,from(orange),to(#9162f5));
@@ -114,12 +99,7 @@ h3{
     margin-top: 2rem;
 }
 
-<<<<<<< HEAD
 /************************************************************ PRODUCTS PRESENTATION ************************************************************/
-=======
-
-/* PRODUCTS PRESENTATION */
->>>>>>> responsive
 h4{
     color: black;
     display: flex;
@@ -132,7 +112,7 @@ h4{
 .card{
     width: 500px;
     height: 500px;
-    box-shadow: 12px 12px 2px 1px #FFFFF3;
+    box-shadow: 12px 12px 2px 1px #E0E3DA;
     padding: 1.5rem;
     margin: auto;
     margin-bottom: 3rem;
@@ -154,22 +134,25 @@ h4{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 100px;
 }
 select{
     width: auto;
     border-color: #FFE4C4;
 }
 
-.selection{
-    margin: auto;
-    margin-top: 2rem;
-    border-color:black;
-    color: black;
-    width: 25%;
+// .selection{
+//     margin: auto;
+//     margin-top: 2rem;
+//     border-color:black;
+//     color: black;
+//     width: 25%;
+// }
+.buttonPosition{
+    display: flex;
+    justify-content: space-around;
 }
-.selection:hover{
-    background:#A593E0 ;
-}
+
 /************************************************************* PRODUCTS PAGE *************************************************************/
 
 @mixin margin {
@@ -180,11 +163,10 @@ select{
    height: auto;
    padding: 2rem;
    background-color:white;
-   box-shadow: 12px 12px 2px 1px #FFFFF3;
+   box-shadow: 12px 12px 2px 1px #E0E3DA;
 }
 
 .teddyImg{
-    // border: 1px solid black;
     margin: auto;
     width: 100%;
     height: 80%;
@@ -199,10 +181,13 @@ select{
     width: 25%;
     @include margin
 }
-
-.returnLink{
-    color: black;
+.btn-outline-dark:hover{
+    background-color: #A593E0;
 }
+
+// .returnLink{
+//     color: black;
+// }
 
 
 // ************************************************************CART PAGE************************************************************
@@ -228,7 +213,6 @@ table{
             }
         }
 }
-
 #showform{
     display: none;
 }
@@ -244,7 +228,27 @@ table{
     margin-right: auto;
 }
 
+#hideafterconfirmation{
+    margin-bottom: 100px;
+}
+#orderForm{
+    margin-bottom: 100px;
+}
+#btnSubmit{
+    color: black;
+    border-color: black;
+    background: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+#btnSubmit:hover{
+    background: #A593E0;
+    color: white;
+}
 //*********************************************************** FORM VALIDATION***********************************************************
+
 .form-group.error input {
     border: 1px solid red;
 }
@@ -276,5 +280,8 @@ table{
     margin: auto;
     height: 30vh;
     background-color:white;
-    padding: 0.5rem; 
+    padding: 0.8rem; 
+    margin-top: 100px;
+    box-shadow: 12px 12px 2px 2px #E0E3DA;
+    border-radius: 5px;
  }
