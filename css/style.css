@@ -68,10 +68,10 @@ h3 {
   font-size: 1.5rem;
   margin-top: 2rem; }
 
-.new-section .jumbotron {
-  height: 500px;
-  background: url(/images/teddytriste.jpg) no-repeat;
-  background-size: 100%; }
+#teddyHeader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 
 .grad {
   background: -webkit-gradient(linear, left top, right bottom, from(orange), to(#9162f5));
