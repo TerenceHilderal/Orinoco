@@ -38,7 +38,7 @@ const addTocart = () => {
     Swal.fire({
         title: 'Your product has been added',
         icon: 'success',
-        html: '<a href ="cart.html">Acces your cart by clicking here</a><br><br> <a href =index.html#ourProducts>Or go back to home page</a>',
+        html: '<a href ="/view/cart.html">Acces your cart by clicking here</a><br><br> <a href =/index.html#ourProducts>Or go back to home page</a>',
         showCloseButton: true,
         showConfirmButton: false
     })

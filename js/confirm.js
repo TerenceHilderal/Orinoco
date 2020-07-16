@@ -26,7 +26,7 @@ goBack.style.margin = "auto"
 
 goBack.addEventListener("click", () => {
   localStorage.clear()
-  window.location = 'index.html' + "#ourProducts"
+  window.location = '/index.html' + "#ourProducts"
 })
 
 

@@ -121,7 +121,7 @@ order.addEventListener("click", () => {
 })
 
 
-// ************************************PARTIE FORMULAIRE ************************************************************************************
+// ************************************FORM ************************************************************************************
 const lastName = document.getElementById("last_name")
 const firstName = document.getElementById("first_name")
 const email = document.getElementById("email")
@@ -129,32 +129,6 @@ const city = document.getElementById("city")
 const address = document.getElementById("address")
 const orderForm = document.getElementById("orderForm")
 const inputs = document.querySelectorAll("input")
-
-
-// fonction pour verifier la validité du champs remplis avec l API CONSTRAINT VALIDATION
-
-// const checkValidity = (input) => {
-//   input.addEventListener('invalid', (e) => {
-//     e.preventDefault()
-//     if (!e.target.validity.valid) {
-//       e.target.parentElement.classList.add('error')
-//       console.log("pas ok");
-//     }
-
-//     input.addEventListener('input', (e) => {
-//       if (e.target.validity.valid) {
-//         e.target.parentElement.classList.remove('error')
-//         console.log("ok")
-//       }
-//     })
-//   }
-//   )
-// }
-// Array.from(inputs).forEach(checkValidity)
-// catch the small element
-// const small = document.getElementsByTagName("small")
-// console.log(small);
-// new RegExp('^[a-zA-Z-¨é]+', 'g')
 
 // creating a regexp and listening changing event on each inputs
 let regexFullName = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
@@ -243,7 +217,7 @@ const validAdress = () => {
   }
 }
 
-// adresse de l'api pour le post
+
 
 const urlApi = "http://localhost:3000/api/teddies/order"
 

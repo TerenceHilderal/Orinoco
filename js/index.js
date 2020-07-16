@@ -65,7 +65,7 @@ const fetchIndex = () => {
                 const seeMore = () => {
                     buttonInfo.addEventListener("click", () => {
                         let id = getTeddies._id
-                        document.location.href = "product.html?id=" + id
+                        document.location.href = "view/product.html?id=" + id
                     })
                 }
                 seeMore()
@@ -90,7 +90,7 @@ const fetchIndex = () => {
                         Swal.fire({
                             title: 'Your product has been added',
                             icon: 'success',
-                            html: '<a href ="cart.html">Acces your cart by clicking here</a><br>',
+                            html: '<a href ="/view/cart.html">Acces your cart by clicking here</a><br>',
                             showCloseButton: true,
                             showConfirmButton: false
                         })
