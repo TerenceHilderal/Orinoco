@@ -52,88 +52,88 @@ if (checkStorage) {
     cart = [...checkStorageParse]
     numberArticle.innerHTML = cart.length
 }
+const fetchById = () => {
+    fetch("http://localhost:3000/api/teddies/" + idTeddies)
+        .then(response => response.json())
+        .then(function (data) {
+            teddy = data
 
-fetch("http://localhost:3000/api/teddies/" + idTeddies)
+            const divCol4 = createElement("div")
+            classElement(divCol4, "col-lg-4")
 
-    .then(response => response.json())
-    .then(function (data) {
-        teddy = data
+            const divCol8 = createElement("div")
+            classElement(divCol8, "col-lg-8", "d-flex", "flex-column")
+            divButtons = createElement("div")
 
-        const divCol4 = createElement("div")
-        classElement(divCol4, "col-lg-4")
+            // ELEMENT CREATION
+            let teddyName = createElement("h2")
+            teddyPrice = createElement("span")
+            teddyDescription = createElement("p")
+            teddyImage = createElement("img")
+            teddyLabel = createElement("label")
+            teddySelect = createElement("select")
+            previousButton = createElement("button")
+            addButton = createElement("button")
 
-        const divCol8 = createElement("div")
-        classElement(divCol8, "col-lg-8", "d-flex", "flex-column")
-        divButtons = createElement("div")
+            // // INNER
+            teddyName.innerHTML = teddy.name
+            teddyPrice.innerHTML = "Price : " + " " + teddy.price / 100 + " $"
+            teddyDescription.innerHTML = "Description :" + " " + teddy.description
+            teddyImage.src = teddy.imageUrl
+            teddyLabel.innerHTML = "Colors : "
+            previousButton.innerHTML = "Previous"
+            addButton.innerHTML = "Add to cart"
 
-        // ELEMENT CREATION
-        let teddyName = createElement("h2")
-        teddyPrice = createElement("span")
-        teddyDescription = createElement("p")
-        teddyImage = createElement("img")
-        teddyLabel = createElement("label")
-        teddySelect = createElement("select")
-        previousButton = createElement("button")
-        addButton = createElement("button")
+            // MODIF DES CLASSES
+            classElement(divButtons, "divButtons")
+            classElement(teddyName, "teddyName")
+            classElement(teddyPrice, "teddyPrice")
+            classElement(teddyDescription, "teddyDescription")
+            classElement(addButton, "btn", "btn-outline-dark", "add-cart")
+            classElement(teddyImage, "teddyImg")
+            classElement(previousButton, "btn", "btn-outline-dark", "returnLink")
 
-        // // INNER
-        teddyName.innerHTML = teddy.name
-        teddyPrice.innerHTML = "Price : " + " " + teddy.price / 100 + " $"
-        teddyDescription.innerHTML = "Description :" + " " + teddy.description
-        teddyImage.src = teddy.imageUrl
-        teddyLabel.innerHTML = "Colors : "
-        previousButton.innerHTML = "Previous"
-        addButton.innerHTML = "Add to cart"
+            // AJOUT ATTRIBUTS
+            teddyLabel.setAttribute("for", "color")
+            classElement(teddySelect, "selectColor")
+            previousButton.setAttribute("href", "index.html")
 
-        // MODIF DES CLASSES
-        classElement(divButtons, "divButtons")
-        classElement(teddyName, "teddyName")
-        classElement(teddyPrice, "teddyPrice")
-        classElement(teddyDescription, "teddyDescription")
-        classElement(addButton, "btn", "btn-outline-dark", "add-cart")
-        classElement(teddyImage, "teddyImg")
-        classElement(previousButton, "btn", "btn-outline-dark", "returnLink")
+            for (let i = 0; i < teddy.colors.length; i++) {
+                let option = createElement("option")
+                let teddyColors = teddy.colors[i];
+                option.setAttribute("value", teddyColors)
+                option.innerHTML = teddyColors
+                append(teddySelect, option)
+            }
 
-        // AJOUT ATTRIBUTS
-        teddyLabel.setAttribute("for", "color")
-        classElement(teddySelect, "selectOption")
-        previousButton.setAttribute("href", "index.html")
+            // APPEND DES ELEMENTS CREE A LA DIV QUI DOIT LES ACCUEILLIR
+            append(choosenProduct, divCol4)
+            append(divCol4, teddyImage)
 
-        for (let i = 0; i < teddy.colors.length; i++) {
+            // APPEND COL 8
+            append(choosenProduct, divCol8)
+            append(divCol8, teddyName)
+            append(divCol8, teddyDescription)
+            append(divCol8, teddyPrice)
+            append(divCol8, teddyLabel)
+            append(teddyLabel, teddySelect)
+            append(divCol8, divButtons)
+            append(divButtons, previousButton)
+            append(divButtons, addButton)
 
-            var option = createElement("option")
-            var teddyColors = teddy.colors[i];
-            option.setAttribute("value", teddyColors)
-            option.innerHTML = teddyColors
-            append(teddySelect, option)
-        }
+            // FUNCTION FOR ADDING CONTENT TO CART
+            addButton.addEventListener("click", () => {
+                addTocart()
+            })
+            // FUNCTION PREVIOUS
 
-        // APPEND DES ELEMENTS CREE A LA DIV QUI DOIT LES ACCUEILLIR
-        append(choosenProduct, divCol4)
-        append(divCol4, teddyImage)
+            previousButton.addEventListener("click", () => {
+                previousFunction()
+            })
 
-        // APPEND COL 8
-        append(choosenProduct, divCol8)
-        append(divCol8, teddyName)
-        append(divCol8, teddyDescription)
-        append(divCol8, teddyPrice)
-        append(divCol8, teddyLabel)
-        append(teddyLabel, teddySelect)
-        append(divCol8, divButtons)
-        append(divButtons, previousButton)
-        append(divButtons, addButton)
-
-        // FUNCTION FOR ADDING CONTENT TO CART
-        addButton.addEventListener("click", () => {
-            addTocart()
         })
-        // FUNCTION PREVIOUS
-
-        previousButton.addEventListener("click", () => {
-            previousFunction()
+        .catch(() => {
+            alert("ERREUR 404 : PAGE NOT FOUND")
         })
-
-    })
-    .catch(() => {
-        alert("ERREUR 404 : PAGE NOT FOUND")
-    })
+}
+fetchById()

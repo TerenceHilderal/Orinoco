@@ -1,13 +1,11 @@
 
-function createElement(element) {
-    return document.createElement(element);
-}
-function append(parent, el) {
-    return parent.appendChild(el);
-}
+const createElement = element => document.createElement(element);
+const classElement = (element, class1, class2 = null, class3 = null) => element.classList.add(class1, class2, class3)
+const append = (parent, el) => parent.appendChild(el);
 
-let container = document.querySelector("#teddiesContainer")
-let numberArticle = document.getElementById("numberArticle")
+
+const container = document.querySelector("#teddiesContainer")
+const numberArticle = document.getElementById("numberArticle")
 let cart = []
 
 // when we came back to a page product : 
@@ -19,108 +17,106 @@ if (checkStorage) {
     cart = [...checkStorageParse]
     numberArticle.innerHTML = cart.length
 }
+const fetchIndex = () => {
+    fetch("http://localhost:3000/api/teddies/")
+        .then(response => response.json())
+        .then(function (data) {
 
-fetch("http://localhost:3000/api/teddies/")
-    .then(response => response.json())
-    .then(function (data) {
+            for (let getTeddies of data) {
 
-        for (let getTeddies of data) {
+                // Création des div
+                let divCol = createElement("div")
+                classElement(divCol, "col-lg-6")
 
-            // Création des div
-            let divCol = createElement("div")
-            divCol.classList.add("col-lg-6")
+                let divCard = createElement("div")
+                classElement(divCard, "card")
+                divCard.setAttribute("width", "30rem")
 
-            let divCard = createElement("div")
-            divCard.classList.add("card")
-            divCard.setAttribute("width", "30rem")
+                let divCardBody = createElement("div")
+                divCardBody.classList.add("card-body")
 
-            let divCardBody = createElement("div")
-            divCardBody.classList.add("card-body")
+                let divButtons = createElement("div")
+                divButtons.classList.add("buttonPosition")
 
-            let divButtons = createElement("div")
-            divButtons.classList.add("buttonPosition")
+                // création des éléments qui vont être append dans les div
+                let img = createElement("img")
+                img.classList.add('card-image-top')
+                img.setAttribute("alt", "teddies")
+                img.src = getTeddies.imageUrl
 
-            // création des éléments qui vont être append dans les div
-            let img = createElement("img")
-            img.classList.add('card-image-top')
-            img.setAttribute("alt", "teddies")
-            img.src = getTeddies.imageUrl
-            append(divCard, img)
+                let teddyName = createElement("h2")
+                teddyName.innerHTML = getTeddies.name
+                classElement(teddyName, "card-title")
 
-            let teddyName = createElement("h5")
-            teddyName.innerHTML = getTeddies.name
-            teddyName.classList.add("card-title")
-            append(divCardBody, teddyName)
+                let teddyPrice = createElement("span")
+                teddyPrice.innerHTML = "Price : " + " " + getTeddies.price / 100 + " $"
 
+                let teddyDescription = createElement("p")
+                teddyDescription.innerHTML = "Description : " + " " + getTeddies.description
 
-            let teddyPrice = createElement("span")
-            teddyPrice.innerHTML = "Price : " + " " + getTeddies.price / 100 + " $"
-            append(divCardBody, teddyPrice)
+                let buttonInfo = createElement("button")
+                buttonInfo.innerHTML = "See more"
+                classElement(buttonInfo, "btn", "btn-outline-dark", "selection")
 
+                let addButton = createElement("button")
+                addButton.innerHTML = "Add "
+                classElement(addButton, "btn", "btn-outline-dark", "addToCart")
 
-            let teddyDescription = createElement("p")
-            teddyDescription.innerHTML = "Description : " + " " + getTeddies.description
-            append(divCardBody, teddyDescription)
-
-            let buttonInfo = createElement("button")
-            buttonInfo.innerHTML = "See more"
-            buttonInfo.classList.add("btn")
-            buttonInfo.classList.add("btn-outline-dark")
-            buttonInfo.classList.add("selection")
-
-            let addButton = createElement("button")
-            addButton.innerHTML = "Add "
-            addButton.classList.add("btn")
-            addButton.classList.add("btn-outline-dark")
-            addButton.classList.add("addToCart")
-
-            buttonInfo.addEventListener("click", function (recupId) {
-                let id = getTeddies._id
-                document.location.href = "product.html?id=" + id
-            })
-
-            addButton.addEventListener("click", () => {
-                console.log("bonjour");
-                const addTocart = () => {
-                    const teddyAdd = {
-                        id: getTeddies._id,
-                        name: getTeddies.name,
-                        image: getTeddies.imageUrl,
-                        description: getTeddies.description,
-                        color: getTeddies.colors[0],
-                        price: getTeddies.price,
-                    }
-                    cart = [...cart, teddyAdd];
-
-                    localStorage.setItem("cart", JSON.stringify(cart))
-
-                    numberArticle.innerHTML = cart.length
-                    console.log(teddyAdd);
-
-                    Swal.fire({
-                        title: 'Your product has been added',
-                        icon: 'success',
-                        html: '<a href ="cart.html">Acces your cart by clicking here</a><br>',
-                        showCloseButton: true,
-                        showConfirmButton: false
+                const seeMore = () => {
+                    buttonInfo.addEventListener("click", () => {
+                        let id = getTeddies._id
+                        document.location.href = "product.html?id=" + id
                     })
                 }
-                addTocart()
-            })
-            // append des div
-            append(divCol, divCard)
-            append(divCard, divCardBody)
-            append(divCard, buttonInfo)
-            append(divCard, addButton)
-            append(divCardBody, divButtons)
-            append(divButtons, buttonInfo)
-            append(divButtons, addButton)
-            append(container, divCol)
-        }
+                seeMore()
 
-    })
+                addButton.addEventListener("click", () => {
 
-// je récupere dans mon storage pour afficher le nombre de produits dans le panier 
+                    const addTocart = () => {
+                        const teddyAdd = {
+                            id: getTeddies._id,
+                            name: getTeddies.name,
+                            image: getTeddies.imageUrl,
+                            description: getTeddies.description,
+                            color: getTeddies.colors[0],
+                            price: getTeddies.price,
+                        }
+                        cart = [...cart, teddyAdd];
+
+                        localStorage.setItem("cart", JSON.stringify(cart))
+
+                        numberArticle.innerHTML = cart.length
+
+                        Swal.fire({
+                            title: 'Your product has been added',
+                            icon: 'success',
+                            html: '<a href ="cart.html">Acces your cart by clicking here</a><br>',
+                            showCloseButton: true,
+                            showConfirmButton: false
+                        })
+                    }
+                    addTocart()
+                })
+
+                // append des div
+                append(divCardBody, teddyName)
+                append(divCardBody, teddyPrice)
+                append(divCardBody, teddyDescription)
+                append(divCol, divCard)
+                append(divCard, img)
+                append(divCard, divCardBody)
+                append(divCard, buttonInfo)
+                append(divCard, addButton)
+                append(divCardBody, divButtons)
+                append(divButtons, buttonInfo)
+                append(divButtons, addButton)
+                append(container, divCol)
+            }
+        })
+}
+fetchIndex()
+
+// recover my storage
 
 let numberProductsInCart = JSON.parse(localStorage.getItem("cart"))
 if (!numberProductsInCart) {

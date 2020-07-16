@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: auto;
     height: 100vh;
     background-color: #FFFFF3;
 }
@@ -10,7 +10,7 @@ body{
 
 .navbar{
     background-color: #A593E0;
-    width: 100%;
+    width: auto
 }
 .navbar-brand{
     font-family: 'Finger Paint', cursive;
@@ -22,18 +22,18 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: auto;
     height: 200px;
     background-color: #A593E0;
 }
 .size{
     font-size: 7.5rem;
 }
-.para{
-    font-size: 1rem;
-}
+
 .brand{
     font-family: 'Finger Paint', cursive;
-    font-size: 6rem;
+    font-size: 5rem;
+    width: auto;
 }
 h3{
     text-align: center;
@@ -100,17 +100,19 @@ h3{
 }
 
 /************************************************************ PRODUCTS PRESENTATION ************************************************************/
+h2{
+    font-family:'Finger Paint', cursive;
+}
 h4{
     color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
     font-family: 'Finger Paint', cursive;
 }
 
 .card{
-    width: 500px;
+    width: 480px;
     height: 500px;
     box-shadow: 12px 12px 2px 1px #E0E3DA;
     padding: 1.5rem;
@@ -134,6 +136,7 @@ h4{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: auto;
     margin-bottom: 100px;
 }
 select{
@@ -141,13 +144,6 @@ select{
     border-color: #FFE4C4;
 }
 
-// .selection{
-//     margin: auto;
-//     margin-top: 2rem;
-//     border-color:black;
-//     color: black;
-//     width: 25%;
-// }
 .buttonPosition{
     display: flex;
     justify-content: space-around;
@@ -164,6 +160,7 @@ select{
    padding: 2rem;
    background-color:white;
    box-shadow: 12px 12px 2px 1px #E0E3DA;
+   margin-bottom: 150px;
 }
 
 .teddyImg{
@@ -184,10 +181,6 @@ select{
 .btn-outline-dark:hover{
     background-color: #A593E0;
 }
-
-// .returnLink{
-//     color: black;
-// }
 
 
 // ************************************************************CART PAGE************************************************************
@@ -247,6 +240,9 @@ table{
     background: #A593E0;
     color: white;
 }
+.checkout{
+    margin-top: 1rem;
+}
 //*********************************************************** FORM VALIDATION***********************************************************
 
 .form-group.error input {
@@ -278,10 +274,11 @@ table{
     display: flex;
     flex-direction: column;
     margin: auto;
-    height: 30vh;
+    height: auto;
     background-color:white;
     padding: 0.8rem; 
     margin-top: 100px;
     box-shadow: 12px 12px 2px 2px #E0E3DA;
     border-radius: 5px;
  }
+ 

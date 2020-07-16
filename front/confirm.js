@@ -18,7 +18,7 @@ idOrder.innerHTML = " Here is your id order : " + getCustomerOrder.orderId
 
 
 const goBack = createElement("button")
-goBack.innerHTML = "Back to home page"
+goBack.innerHTML = "Home "
 goBack.classList.add("confirmGoBack")
 goBack.classList.add("btn")
 goBack.classList.add("btn-outline-dark")
