@@ -22,6 +22,7 @@ const fetchIndex = () => {
         .then(response => response.json())
         .then(function (data) {
 
+
             for (let getTeddies of data) {
 
                 // Création des div

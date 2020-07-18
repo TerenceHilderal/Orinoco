@@ -38,7 +38,7 @@
     <header>
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="index.html"><span
+            <a class="navbar-brand" href="../index.html"><span
                     class="icon-Capture-decran-2020-05-26-a-134723-3 navicon"></span>Orinoco</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Home"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -126,14 +126,16 @@
 
                 <div class="form-group">
                     <label for="first_name">Name</label>
-                    <input type="text" class="form-control" id="first_name" placeholder="Name" required>
+                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Name"
+                        required>
                     <small></small>
 
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="abc@exemple.com" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="abc@exemple.com"
+                        required>
                     <small></small>
 
                 </div>
@@ -141,7 +143,7 @@
 
                 <div class="form-group">
                     <label for="city">City</label>
-                    <input type="text" class="form-control" id="city" placeholder=" London,Paris, etc..."
+                    <input type="text" class="form-control" id="city" name="city" placeholder=" London,Paris, etc..."
                         pattern="^\D*$" required>
                     <small></small>
 
@@ -149,7 +151,8 @@
 
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder=" Charles peguy street" required>
+                    <input type="text" class="form-control" id="address" name="address"
+                        placeholder=" 23 Charles peguy street" required>
                     <small></small>
 
                 </div>
