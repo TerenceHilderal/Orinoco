@@ -17,7 +17,7 @@ let numberArticle = document.getElementById("numberArticle")
 let teddy = null;
 
 // function to go back to home page
-const previousFunction = () => window.location = ("index.html" + "#ourProducts")
+const previousFunction = () => window.location = ("../index.html" + "#ourProducts")
 // init de la cart
 let cart = [];
 // function add to cart
@@ -38,7 +38,7 @@ const addTocart = () => {
     Swal.fire({
         title: 'Your product has been added',
         icon: 'success',
-        html: '<a href ="/view/cart.html">Acces your cart by clicking here</a><br><br> <a href =/index.html#ourProducts>Or go back to home page</a>',
+        html: '<a href ="./cart.html">Acces your cart by clicking here</a><br><br> <a href =/index.html#ourProducts>Or go back to home page</a>',
         showCloseButton: true,
         showConfirmButton: false
     })
