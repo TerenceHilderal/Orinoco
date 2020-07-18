@@ -1,13 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  background-color: #f3e9f1;
+  width: auto;
+  height: 100vh;
+  background-color: #FFFFF3;
 }
 
-/* HEADER */
+/************************************************************ HEADER ************************************************************/
 .navbar {
-  background-color: #f3e9f1;
+  background-color: #A593E0;
+  width: auto;
 }
 
 .navbar-brand {
@@ -28,21 +30,19 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 400px;
-  background-color: #f3e9f1;
+  width: auto;
+  height: 200px;
+  background-color: #A593E0;
 }
 
 .size {
   font-size: 7.5rem;
 }
 
-.para {
-  font-size: 1rem;
-}
-
 .brand {
   font-family: 'Finger Paint', cursive;
-  font-size: 6rem;
+  font-size: 5rem;
+  width: auto;
 }
 
 h3 {
@@ -57,31 +57,49 @@ h3 {
   color: transparent;
 }
 
-/* FEATURES */
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #566270;
+  height: 50px;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+/************************************************************ FEATURES ************************************************************/
 .feature {
-  background: white;
+  background: #E0E3DA;
 }
 
-.features {
+.feature .features {
   text-align: center;
-  margin: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-.icon {
+.feature .features .icon {
   color: #c87a5e;
 }
 
-/* PRESENTATION NEW SECTION */
-.jumbotron {
-  height: 800px;
-  background: url(/images/teddy_5.jpg) no-repeat;
-  background-size: 100%;
-}
-
+/* ***********************************************************PRESENTATION NEW SECTION ************************************************************/
 .new-section p {
   text-align: center;
   font-size: 1.5rem;
   margin-top: 2rem;
+}
+
+#teddyHeader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .grad {
@@ -95,18 +113,27 @@ h3 {
   margin-top: 2rem;
 }
 
-/* PRODUCTS PRESENTATION */
+/************************************************************ PRODUCTS PRESENTATION ************************************************************/
+h2 {
+  font-family: 'Finger Paint', cursive;
+}
+
 h4 {
+  color: black;
   text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: 'Finger Paint', cursive;
 }
 
 .card {
-  width: 500px;
+  width: 480px;
   height: 500px;
-  -webkit-box-shadow: 12px 12px 2px 1px #FFE4C4;
-          box-shadow: 12px 12px 2px 1px #FFE4C4;
+  -webkit-box-shadow: 12px 12px 2px 1px #E0E3DA;
+          box-shadow: 12px 12px 2px 1px #E0E3DA;
   padding: 1.5rem;
-  margin: 1rem;
+  margin: auto;
+  margin-bottom: 3rem;
 }
 
 .card .card-text {
@@ -117,18 +144,171 @@ h4 {
   padding-top: 0.5rem;
 }
 
+.card-image-top {
+  margin: auto;
+  width: 50%;
+}
+
+#teddiesContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  margin-bottom: 100px;
+}
+
 select {
   width: auto;
   border-color: #FFE4C4;
 }
 
-.selection {
+.buttonPosition {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+/************************************************************* PRODUCTS PAGE *************************************************************/
+#choosenProduct {
+  height: auto;
+  padding: 2rem;
+  background-color: white;
+  -webkit-box-shadow: 12px 12px 2px 1px #E0E3DA;
+          box-shadow: 12px 12px 2px 1px #E0E3DA;
+  margin-bottom: 150px;
+}
+
+.teddyImg {
   margin: auto;
+  width: 100%;
+  height: 80%;
+}
+
+.divButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.btn-outline-dark {
+  width: 25%;
   margin-top: 2rem;
-  border-color: #FFE4C4;
-  color: #FFE4C4;
+}
+
+.btn-outline-dark:hover {
+  background-color: #A593E0;
+}
+
+.imgInCart {
+  width: 60px;
+  height: 60px;
+  margin-left: 1rem;
+  padding-top: 1rem;
+}
+
+table {
+  width: 400px;
+  background-color: white;
+  padding: 1rem;
+}
+
+table th {
+  width: 200px;
+  padding: 1rem;
+}
+
+table td button {
+  margin-left: 40%;
+}
+
+#showform {
+  display: none;
+}
+
+.inCartImage {
+  width: 60px;
+  height: 60px;
+}
+
+#order {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hideafterconfirmation {
+  margin-bottom: 100px;
+}
+
+#orderForm {
+  margin-bottom: 100px;
+}
+
+#btnSubmit {
+  color: black;
+  border-color: black;
+  background: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 25%;
 }
 
-/* PRODUCTS PAGE */
+#btnSubmit:hover {
+  background: #A593E0;
+  color: white;
+}
+
+.checkout {
+  margin-top: 1rem;
+}
+
+.form-group.error input {
+  border: 1px solid red;
+}
+
+.form-group .error label {
+  color: red;
+}
+
+.form-group.error::after {
+  content: 'Invalid input, please try again';
+  display: block;
+  color: red;
+  padding: 5px 0;
+  font-size: .9rem;
+}
+
+#contact {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+#greetingUser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+  height: auto;
+  background-color: white;
+  padding: 0.8rem;
+  margin-top: 100px;
+  -webkit-box-shadow: 12px 12px 2px 2px #E0E3DA;
+          box-shadow: 12px 12px 2px 2px #E0E3DA;
+  border-radius: 5px;
+}
 /*# sourceMappingURL=style.css.map */

@@ -92,7 +92,7 @@ const fetchIndex = () => {
                         Swal.fire({
                             title: 'Your product has been added',
                             icon: 'success',
-                            html: '<a href ="/front/cart.html">Acces your cart by clicking here</a><br>',
+                            html: '<a href ="./front/cart.html">Acces your cart by clicking here</a><br>',
                             showCloseButton: true,
                             showConfirmButton: false
                         })
