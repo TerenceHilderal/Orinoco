@@ -110,7 +110,7 @@ order.addEventListener("click", () => {
     Swal.fire({
       title: ' Sorry, your cart is empty, you can\'t confirm your order',
       icon: 'error',
-      html: 'Don\'t worry you can go back to our home page by clicking <a href = /index.html>here </a>',
+      html: 'Don\'t worry you can go back to our home page by clicking <a href = ../index.html>here </a>',
       showCloseButton: true,
       showConfirmButton: false
     })
