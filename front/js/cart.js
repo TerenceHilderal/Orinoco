@@ -136,18 +136,12 @@ let regexGlobal = /^[a-zA-Z- ]+$/u
 let regexAddress = /^[0-9]{1,5}( [-a-zA-Zàâäéèêëïîôöùûüç ]+)+$/
 let regexEmail = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
 
-let testLastName
-let testFirstName
-let testEmail
-let testCity
-let testAddress
-
 // listening event on changement
-orderForm.last_name.addEventListener('change', e => testField(testLastName, regexGlobal, e.target.value, lastName, "Sorry , you shouldnt have a number in your name"))
-// orderForm.first_name.addEventListener('change', e => testField(regexGlobal, e.target.value, firstName, "Sorry,you shouldn't have a number in your name"))
-// orderForm.email.addEventListener('change', e => testField(regexEmail, e.target.value, email, "Sorry,your email adress is not correct , it should contain @"))
-// orderForm.city.addEventListener('change', e => testField(regexGlobal, e.target.value, city, "Sorry,you shouldn't have a number in your City name"))
-// orderForm.address.addEventListener('change', e => testField(regexAddress, e.target.value, address, "Sorry ,wrong input in your address , you should follow the example"))
+orderForm.last_name.addEventListener('change', e => testField(regexGlobal, e.target.value, lastName, "Sorry , you shouldnt have a number in your name"))
+orderForm.first_name.addEventListener('change', e => testField(regexGlobal, e.target.value, firstName, "Sorry,you shouldn't have a number in your name"))
+orderForm.email.addEventListener('change', e => testField(regexEmail, e.target.value, email, "Sorry,your email adress is not correct , it should contain @"))
+orderForm.city.addEventListener('change', e => testField(regexGlobal, e.target.value, city, "Sorry,you shouldn't have a number in your City name"))
+orderForm.address.addEventListener('change', e => testField(regexAddress, e.target.value, address, "Sorry ,wrong input in your address , you should follow the example"))
 
 // creating variable to test values of inputs 
 let test
@@ -174,7 +168,7 @@ let contact; let orderToSend
 
 orderForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (testLastName === false) {
+  if (!test) {
     e.preventDefault()
   }
   else if (contact = "") {
