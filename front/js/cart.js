@@ -146,7 +146,7 @@ orderForm.address.addEventListener('change', e => testField(regexAddress, e.targ
 // creating variable to test values of inputs 
 let test
 
-const testField = (test, regex, value, fields, errorMessage) => {
+const testField = (regex, value, fields, errorMessage) => {
   test = regex.test(value)
   let small = fields.nextElementSibling
   if (test) {
