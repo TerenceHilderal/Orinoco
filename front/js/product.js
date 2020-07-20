@@ -1,7 +1,15 @@
 
 
 const createElement = element => document.createElement(element)
-const classElement = (element, class1, class2 = null, class3 = null) => element.classList.add(class1, class2, class3)
+// const classElement = (element, class1, class2 = null, class3 = null) => element.classList.add(class1, class2, class3)
+const classElement = (element, classArray) => {
+    classArray.forEach(el => {
+        element.classList.add(el)
+    })
+}
+
+
+
 const append = (parent, el) => parent.appendChild(el)
 
 
@@ -10,8 +18,8 @@ const urlParams = new URLSearchParams(window.location.search)
 let idTeddies = urlParams.get("id")
 
 // recover the div i need
-let choosenProduct = document.querySelector("#choosenProduct")
-let numberArticle = document.getElementById("numberArticle")
+const choosenProduct = document.querySelector("#choosenProduct")
+const numberArticle = document.getElementById("numberArticle")
 
 // init teddy variable which will contain the fetch's datas
 let teddy = null;
@@ -20,8 +28,10 @@ let teddy = null;
 const previousFunction = () => window.location = ("../index.html" + "#ourProducts")
 // init de la cart
 let cart = [];
+
+
 // function add to cart
-const addTocart = () => {
+const addTocart = (color) => {
     const teddyAdd = {
         id: teddy._id,
         name: teddy.name,
@@ -52,6 +62,7 @@ if (checkStorage) {
     cart = [...checkStorageParse]
     numberArticle.innerHTML = cart.length
 }
+
 const fetchById = () => {
     fetch("http://localhost:3000/api/teddies/" + idTeddies)
         .then(response => response.json())
@@ -59,10 +70,11 @@ const fetchById = () => {
             teddy = data
 
             const divCol4 = createElement("div")
-            classElement(divCol4, "col-lg-4")
+            classElement(divCol4, ["col-lg-4"])
 
             const divCol8 = createElement("div")
-            classElement(divCol8, "col-lg-8", "d-flex", "flex-column")
+            classElement(divCol8, ["col-lg-8", "d-flex", "flex-column"])
+
             divButtons = createElement("div")
 
             // ELEMENT CREATION
@@ -85,18 +97,23 @@ const fetchById = () => {
             addButton.innerHTML = "Add to cart"
 
             // MODIF DES CLASSES
-            classElement(divButtons, "divButtons")
-            classElement(teddyName, "teddyName")
-            classElement(teddyPrice, "teddyPrice")
-            classElement(teddyDescription, "teddyDescription")
-            classElement(addButton, "btn", "btn-outline-dark", "add-cart")
-            classElement(teddyImage, "teddyImg")
-            classElement(previousButton, "btn", "btn-outline-dark", "returnLink")
+            classElement(divButtons, ["divButtons"])
+            classElement(teddyName, ["teddyName"])
+            classElement(teddyPrice, ["teddyPrice"])
+            classElement(teddyDescription, ["teddyDescription"])
+            classElement(addButton, ["btn", "btn-outline-dark", "add-cart"])
+            classElement(teddyImage, ["teddyImg"])
+            classElement(previousButton, ["btn", "btn-outline-dark", "returnLink"])
 
             // AJOUT ATTRIBUTS
             teddyLabel.setAttribute("for", "color")
-            classElement(teddySelect, "selectColor")
+            classElement(teddySelect, ["selectColor"])
             previousButton.setAttribute("href", "index.html")
+
+            // let optionDefaut = createElement("option")
+            // optionDefaut.innerHTML = "Choose a color"
+            // append(teddySelect, optionDefaut)
+
 
             for (let i = 0; i < teddy.colors.length; i++) {
                 let option = createElement("option")
@@ -131,9 +148,12 @@ const fetchById = () => {
                 previousFunction()
             })
 
-        })
-        .catch(() => {
-            alert("ERREUR 404 : PAGE NOT FOUND")
+        }).catch((error) => {
+            console.log(error);
         })
 }
 fetchById()
+// const selectColor = document.querySelector(".selectColor")
+// selectColor.addEventListener('change', e => {
+//     let selectedColor = e.target.value
+// })

@@ -1,14 +1,18 @@
-body {
+
+ body {
   margin: 0;
   padding: 0;
-  width: auto;
   height: 100vh;
+  width: 100%;
   background-color: #FFFFF3; }
+ 
+  
 
 /************************************************************ HEADER ************************************************************/
 .navbar {
   background-color: #A593E0;
-  width: auto; }
+  color: #9162f5;
+   }
 
 .navbar-brand {
   font-family: 'Finger Paint', cursive; }
@@ -62,6 +66,8 @@ h3 {
     .feature .features .icon {
       color: #c87a5e; }
 
+
+
 /* ***********************************************************PRESENTATION NEW SECTION ************************************************************/
 .new-section p {
   text-align: center;
@@ -94,7 +100,7 @@ h4 {
   font-family: 'Finger Paint', cursive; }
 
 .card {
-  width: 480px;
+  width: 420px;
   height: 500px;
   box-shadow: 12px 12px 2px 1px #E0E3DA;
   padding: 1.5rem;

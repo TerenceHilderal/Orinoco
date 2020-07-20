@@ -1,5 +1,6 @@
 
 
+
 const createElement = element => document.createElement(element)
 
 const append = (parent, el) => parent.appendChild(el)
@@ -128,113 +129,58 @@ const email = document.getElementById("email")
 const city = document.getElementById("city")
 const address = document.getElementById("address")
 const orderForm = document.getElementById("orderForm")
-const inputs = document.querySelectorAll("input")
+
 
 // creating a regexp and listening changing event on each inputs
-let regexFullName = /^[a-zA-Z-]+$/u
+let regexGlobal = /^[a-zA-Z- ]+$/u
 let regexAddress = /^[0-9]{1,5}( [-a-zA-Zàâäéèêëïîôöùûüç ]+)+$/
-let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+let regexEmail = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
 
-// listening event on changement
-orderForm.last_name.addEventListener('change', () => validLastName(this))
-orderForm.first_name.addEventListener('change', () => validFirstName(this))
-orderForm.email.addEventListener('change', () => validEmail(this))
-orderForm.city.addEventListener('change', () => validCity(this))
-orderForm.address.addEventListener('change', () => validAdress(this))
-
-// creating variable to test values of inputs 
 let testLastName
 let testFirstName
 let testEmail
 let testCity
-let testAdress
+let testAddress
 
+// listening event on changement
+orderForm.last_name.addEventListener('change', e => testField(testLastName, regexGlobal, e.target.value, lastName, "Sorry , you shouldnt have a number in your name"))
+// orderForm.first_name.addEventListener('change', e => testField(regexGlobal, e.target.value, firstName, "Sorry,you shouldn't have a number in your name"))
+// orderForm.email.addEventListener('change', e => testField(regexEmail, e.target.value, email, "Sorry,your email adress is not correct , it should contain @"))
+// orderForm.city.addEventListener('change', e => testField(regexGlobal, e.target.value, city, "Sorry,you shouldn't have a number in your City name"))
+// orderForm.address.addEventListener('change', e => testField(regexAddress, e.target.value, address, "Sorry ,wrong input in your address , you should follow the example"))
 
-const validLastName = () => {
-  testLastName = regexFullName.test(lastName.value)
-  let small = lastName.nextElementSibling
-  if (testLastName) {
+// creating variable to test values of inputs 
+let test
+
+const testField = (test, regex, value, fields, errorMessage) => {
+  test = regex.test(value)
+  let small = fields.nextElementSibling
+  if (test) {
     small.innerHTML = " valid input"
     small.classList.remove('text-danger')
     small.classList.add('text-success')
   } else {
-    small.innerHTML = " you shouldnt have a number in your first name"
+    small.innerHTML = errorMessage
     small.classList.remove('text-success')
     small.classList.add('text-danger')
   }
 }
-const validFirstName = () => {
-  testFirstName = regexFullName.test(firstName.value)
-  let small = firstName.nextElementSibling
-  if (testFirstName) {
-    small.innerHTML = " Valid input"
-    small.classList.remove('text-danger')
-    small.classList.add('text-success')
-  } else {
-    small.innerHTML = " you shouldnt have a number in your first name"
-    small.classList.remove('text-success')
-    small.classList.add('text-danger')
-  }
-}
-const validEmail = () => {
-  testEmail = emailRegExp.test(email.value)
-  let small = email.nextElementSibling
-  if (testEmail) {
-    small.innerHTML = " Valid input"
-    small.classList.remove('text-danger')
-    small.classList.add('text-success')
-  } else {
-    small.innerHTML = " you shouldnt have a number in your first name"
-    small.classList.remove('text-success')
-    small.classList.add('text-danger')
-  }
-}
-const validCity = () => {
-  testCity = regexFullName.test(city.value)
-  let small = city.nextElementSibling
-  if (testCity) {
-    small.innerHTML = " Valid input"
-    small.classList.remove('text-danger')
-    small.classList.add('text-success')
-  } else {
-    small.innerHTML = " you shouldnt have a number in your first name"
-    small.classList.remove('text-success')
-    small.classList.add('text-danger')
-  }
-}
-const validAdress = () => {
-  testAdress = regexAddress.test(address.value)
-  let small = address.nextElementSibling
-  if (testAdress) {
-    small.innerHTML = " Valid input"
-    small.classList.remove('text-danger')
-    small.classList.add('text-success')
-    console.log(testAdress);
-  } else {
-    small.innerHTML = " you shouldnt have a number in your first name"
-    small.classList.remove('text-success')
-    small.classList.add('text-danger')
-  }
-}
-
-
 
 const urlApi = "http://localhost:3000/api/teddies/order"
 
 // initializing object to send them to the api
 let contact; let orderToSend
 
+
 orderForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  if (testFirstName == false || !testLastName || !testEmail || !testCity || !testAdress) {
+  if (testLastName === false) {
     e.preventDefault()
   }
   else if (contact = "") {
     e.preventDefault()
   }
   else {
-
     contact = {
       lastName: lastName.value,
       firstName: firstName.value,
@@ -243,7 +189,7 @@ orderForm.addEventListener("submit", (e) => {
       address: address.value
     }
     orderToSend = { contact, products }
-
+    console.log(orderToSend);
     // fetch
     let paramFetch = {
       method: "POST",
