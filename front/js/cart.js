@@ -95,7 +95,6 @@ for (let i = 0; i < yourCartParse.length; i++) {
       const newProducts = products.filter(product => product !== e.target.id)
       // using spread operator to add my new array to my products array
       products = [...newProducts]
-      console.log(products);
       // total cost
       total -= articleInCart.price / 100
       subTotal.innerHTML = total
@@ -130,83 +129,134 @@ const city = document.getElementById("city")
 const address = document.getElementById("address")
 const orderForm = document.getElementById("orderForm")
 
-
 // creating a regexp and listening changing event on each inputs
 let regexGlobal = /^[a-zA-Z- ]+$/u
 let regexAddress = /^[0-9]{1,5}( [-a-zA-Zàâäéèêëïîôöùûüç ]+)+$/
 let regexEmail = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
 
 // listening event on changement
-orderForm.last_name.addEventListener('change', e => testField(regexGlobal, e.target.value, lastName, "Sorry , you shouldnt have a number in your name"))
-orderForm.first_name.addEventListener('change', e => testField(regexGlobal, e.target.value, firstName, "Sorry,you shouldn't have a number in your name"))
-orderForm.email.addEventListener('change', e => testField(regexEmail, e.target.value, email, "Sorry,your email adress is not correct , it should contain @"))
-orderForm.city.addEventListener('change', e => testField(regexGlobal, e.target.value, city, "Sorry,you shouldn't have a number in your City name"))
-orderForm.address.addEventListener('change', e => testField(regexAddress, e.target.value, address, "Sorry ,wrong input in your address , you should follow the example"))
+orderForm.last_name.addEventListener('change', e =>
+  testField(
+    regexGlobal,
+    e.target.value,
+    lastName,
+    "lastName",
+    "Sorry , you shouldnt have a number in your name"
+  )
+)
+
+orderForm.first_name.addEventListener('change', e =>
+  testField(
+    regexGlobal,
+    e.target.value,
+    firstName,
+    "firstName",
+    "Sorry,you shouldn't have a number in your name"
+  )
+)
+orderForm.email.addEventListener('change', e =>
+  testField(
+    regexEmail,
+    e.target.value,
+    email,
+    "email",
+    "Sorry,your email adress is not correct , it should contain @"
+  )
+)
+orderForm.city.addEventListener('change', e =>
+  testField(
+    regexGlobal,
+    e.target.value,
+    city,
+    "city",
+    "Sorry,you shouldn't have a number in your City name"
+  )
+)
+orderForm.address.addEventListener('change', e =>
+  testField(
+    regexAddress,
+    e.target.value,
+    address,
+    "address",
+    "Sorry ,wrong input in your address , you should follow the example"
+  )
+)
 
 // creating variable to test values of inputs 
-let test
+let test = {}
 
-const testField = (regex, value, fields, errorMessage) => {
-  test = regex.test(value)
+const testField = (regex, value, fields, name, errorMessage) => {
   let small = fields.nextElementSibling
-  if (test) {
+  if (regex.test(value) && value !== "") {
     small.innerHTML = " valid input"
     small.classList.remove('text-danger')
     small.classList.add('text-success')
+    test[name] = true
   } else {
     small.innerHTML = errorMessage
     small.classList.remove('text-success')
     small.classList.add('text-danger')
+    test[name] = false
   }
 }
 
-const urlApi = "http://localhost:3000/api/teddies/order"
 
+
+const urlApi = "http://localhost:3000/api/teddies/order"
 // initializing object to send them to the api
 let contact; let orderToSend
 
+const orderTeddy = () => {
+  orderForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let result = true
 
-orderForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (!test) {
-    e.preventDefault()
-  }
-  else if (contact = "") {
-    e.preventDefault()
-  }
-  else {
-    contact = {
-      lastName: lastName.value,
-      firstName: firstName.value,
-      email: email.value,
-      city: city.value,
-      address: address.value
+    for (let key in test) {
+      if (test[key] === false) {
+        result = false
+      }
     }
-    orderToSend = { contact, products }
-    console.log(orderToSend);
-    // fetch
-    let paramFetch = {
-      method: "POST",
-      body: JSON.stringify(orderToSend),
-      headers: { 'Content-type': "application/json" }
-    };
 
-    fetch(urlApi, paramFetch)
-      .then(response => response.json())
-      .then(function (order) {
+    if (result) {
+      contact = {
+        lastName: lastName.value,
+        firstName: firstName.value,
+        email: email.value,
+        city: city.value,
+        address: address.value
+      }
+      orderToSend = { contact, products }
+      console.log(orderToSend);
+      // fetch
+      let paramFetch = {
+        method: "POST",
+        body: JSON.stringify(orderToSend),
+        headers: { 'Content-type': "application/json" }
+      };
 
-        let orderConfirmed = {
-          name: contact.lastName + " " + contact.firstName,
-          price: total,
-          orderId: order.orderId
-        }
+      fetch(urlApi, paramFetch)
+        .then(response => response.json())
+        .then(function (order) {
 
-        let orderStorage = localStorage.setItem("customerOrder", JSON.stringify(orderConfirmed))
-        window.location = "confirm.html"
-
+          let orderConfirmed = {
+            name: contact.lastName + " " + contact.firstName,
+            price: total,
+            orderId: order.orderId
+          }
+          let orderStorage = localStorage.setItem("customerOrder", JSON.stringify(orderConfirmed))
+          window.location = "confirm.html"
+        })
+    } else {
+      Swal.fire({
+        title: ' Sorry, you can\'t send your form , please check again all the fields',
+        icon: 'error',
+        showCloseButton: true,
+        showConfirmButton: false
       })
-  }
-})
+    }
+  })
+}
+orderTeddy()
 
 
 

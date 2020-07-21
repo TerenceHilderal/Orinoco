@@ -1,6 +1,10 @@
 
 const createElement = element => document.createElement(element)
-
+const classElement = (element, classArray) => {
+  classArray.forEach(el => {
+    element.classList.add(el)
+  })
+}
 const append = (parent, el) => parent.appendChild(el)
 
 const greetingUser = document.getElementById("greetingUser")
@@ -19,9 +23,7 @@ idOrder.innerHTML = " Here is your id order : " + getCustomerOrder.orderId
 
 const goBack = createElement("button")
 goBack.innerHTML = "Home "
-goBack.classList.add("confirmGoBack")
-goBack.classList.add("btn")
-goBack.classList.add("btn-outline-dark")
+classElement(goBack, ["confirmGoBack", "btn", "btn-outline-dark"])
 goBack.style.margin = "auto"
 
 goBack.addEventListener("click", () => {
