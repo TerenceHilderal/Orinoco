@@ -9,7 +9,6 @@ const classElement = (element, classArray) => {
 }
 
 
-
 const append = (parent, el) => parent.appendChild(el)
 
 

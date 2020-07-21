@@ -1,6 +1,10 @@
 
 const createElement = element => document.createElement(element);
-const classElement = (element, class1, class2 = null, class3 = null) => element.classList.add(class1, class2, class3)
+const classElement = (element, classArray) => {
+    classArray.forEach(el => {
+        element.classList.add(el)
+    })
+}
 const append = (parent, el) => parent.appendChild(el);
 
 
@@ -27,17 +31,17 @@ const fetchIndex = () => {
 
                 // Création des div
                 let divCol = createElement("div")
-                classElement(divCol, "col-lg-6")
+                classElement(divCol, ["col-lg-6"])
 
                 let divCard = createElement("div")
-                classElement(divCard, "card")
+                classElement(divCard, ["card"])
                 divCard.setAttribute("width", "30rem")
 
                 let divCardBody = createElement("div")
-                divCardBody.classList.add("card-body")
+                classElement(divCardBody, ["card-body"])
 
                 let divButtons = createElement("div")
-                divButtons.classList.add("buttonPosition")
+                classElement(divButtons, ["buttonPosition"])
 
                 // création des éléments qui vont être append dans les div
                 let img = createElement("img")
@@ -47,7 +51,7 @@ const fetchIndex = () => {
 
                 let teddyName = createElement("h2")
                 teddyName.innerHTML = getTeddies.name
-                classElement(teddyName, "card-title")
+                classElement(teddyName, ["card-title"])
 
                 let teddyPrice = createElement("span")
                 teddyPrice.innerHTML = "Price : " + " " + getTeddies.price / 100 + " $"
@@ -57,11 +61,11 @@ const fetchIndex = () => {
 
                 let buttonInfo = createElement("button")
                 buttonInfo.innerHTML = "See more"
-                classElement(buttonInfo, "btn", "btn-outline-dark", "selection")
+                classElement(buttonInfo, ["btn", "btn-outline-dark", "selection"])
 
                 let addButton = createElement("button")
                 addButton.innerHTML = "Add "
-                classElement(addButton, "btn", "btn-outline-dark", "addToCart")
+                classElement(addButton, ["btn", "btn-outline-dark", "addToCart"])
 
                 const seeMore = () => {
                     buttonInfo.addEventListener("click", () => {
