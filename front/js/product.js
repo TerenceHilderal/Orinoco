@@ -1,14 +1,11 @@
 
 
 const createElement = element => document.createElement(element)
-// const classElement = (element, class1, class2 = null, class3 = null) => element.classList.add(class1, class2, class3)
 const classElement = (element, classArray) => {
     classArray.forEach(el => {
         element.classList.add(el)
     })
 }
-
-
 const append = (parent, el) => parent.appendChild(el)
 
 
@@ -30,7 +27,7 @@ let cart = [];
 
 
 // function add to cart
-const addTocart = (color) => {
+const addTocart = () => {
     const teddyAdd = {
         id: teddy._id,
         name: teddy.name,
@@ -60,6 +57,8 @@ const checkStorageParse = JSON.parse(localStorage.getItem("cart"))
 if (checkStorage) {
     cart = [...checkStorageParse]
     numberArticle.innerHTML = cart.length
+} else {
+    choosenProduct.innerHTML = " <h3 class = error> Sorry , can't add your product to your cart, please try again later</h3"
 }
 
 const fetchById = () => {
@@ -109,10 +108,6 @@ const fetchById = () => {
             classElement(teddySelect, ["selectColor"])
             previousButton.setAttribute("href", "index.html")
 
-            // let optionDefaut = createElement("option")
-            // optionDefaut.innerHTML = "Choose a color"
-            // append(teddySelect, optionDefaut)
-
 
             for (let i = 0; i < teddy.colors.length; i++) {
                 let option = createElement("option")
@@ -139,7 +134,11 @@ const fetchById = () => {
 
             // FUNCTION FOR ADDING CONTENT TO CART
             addButton.addEventListener("click", () => {
-                addTocart()
+                try {
+                    addTocart()
+                } catch (error) {
+                    choosenProduct.innerHTML = "<h3 class = error> <b><i> Sorry , something has gone wrong please try again later </h3>"
+                }
             })
             // FUNCTION PREVIOUS
 
@@ -148,11 +147,14 @@ const fetchById = () => {
             })
 
         }).catch((error) => {
-            console.log(error);
+            if (idTeddies.length != 24 || idTeddies === undefined || idTeddies != urlParams) {
+                choosenProduct.innerHTML = "<h3 class = error><b><i> Sorry , the selected product does not exist , please came back to home page and try an other product</h3>"
+            }
         })
 }
-fetchById()
-// const selectColor = document.querySelector(".selectColor")
-// selectColor.addEventListener('change', e => {
-//     let selectedColor = e.target.value
-// })
+try {
+    fetchById()
+} catch (error) {
+    choosenProduct.innerHTML = " <h3 class = error><b><i>!!!!SORRY WE HAVE A PROBLEM IN OUR ATTEMPT TO CONNECT TO THE SERVER,PLEASE TRY AGAIN LATER...</h3>"
+}
+

@@ -30,7 +30,7 @@ let yourCartParse = JSON.parse(localStorage.getItem("cart")) // array of object
 const emptyCart = createElement("p")
 const fullCart = createElement("p")
 
-if (yourCartParse === null) {
+if (!yourCartParse.length) {
   emptyCart.innerHTML = " Sorry , your cart is empty"
   append(checkout, emptyCart)
 } else {
@@ -63,11 +63,6 @@ for (let i = 0; i < yourCartParse.length; i++) {
   image.src = articleInCart.image
   append(cellName, image)
 
-  const cellDelete = createElement("button")
-  cellDelete.innerHTML = "X"
-  cellDelete.id = articleInCart.id
-
-  append(cellPrice, cellDelete)
 
   // TOTAL COST
   total += articleInCart.price / 100
@@ -78,7 +73,13 @@ for (let i = 0; i < yourCartParse.length; i++) {
   // updating number of article in the cart
   numberArticle.innerHTML = products.length
 
-  // au clic sur mon bouton supprimer je veux que la ligne correspondante soit supprimée
+  const cellDelete = createElement("button")
+  cellDelete.innerHTML = "X"
+  cellDelete.id = articleInCart.id
+
+  append(cellPrice, cellDelete)
+
+
   const deleteProduct = () => {
     cellDelete.addEventListener("click", (e) => {
       // i select the product i want to delete
@@ -100,7 +101,17 @@ for (let i = 0; i < yourCartParse.length; i++) {
       subTotal.innerHTML = total
     })
   }
-  deleteProduct()
+  try {
+    deleteProduct();
+  } catch (error) {
+    console.log(error);
+    Swal.fire({
+      title: ' Sorry, we can\'t delete your product right now please try again later',
+      icon: 'error',
+      showCloseButton: true,
+      showConfirmButton: false
+    })
+  }
 }
 
 // display a message error and show the form if needed
@@ -226,7 +237,7 @@ const orderTeddy = () => {
         address: address.value
       }
       orderToSend = { contact, products }
-      console.log(orderToSend);
+
       // fetch
       let paramFetch = {
         method: "POST",
@@ -245,6 +256,8 @@ const orderTeddy = () => {
           }
           let orderStorage = localStorage.setItem("customerOrder", JSON.stringify(orderConfirmed))
           window.location = "confirm.html"
+        }).catch((error) => {
+          form.innerHTML = " <h3 class = error><b><i>SORRY WE HAVE A PROBLEM IN OUR ATTEMPT TO CONNECT TO THE SERVER,PLEASE TRY AGAIN LATER...</h3>"
         })
     } else {
       Swal.fire({
@@ -256,7 +269,11 @@ const orderTeddy = () => {
     }
   })
 }
-orderTeddy()
+try {
+  orderTeddy()
+} catch (error) {
+  form.innerHTML = " <h3 class = error><b><i>Sorry something has gone wrong please try again later..</h3>"
+}
 
 
 

@@ -69,12 +69,14 @@ const fetchIndex = () => {
 
                 const seeMore = () => {
                     buttonInfo.addEventListener("click", () => {
+
                         let id = getTeddies._id
                         document.location.href = "./front/product.html?id=" + id
-
                     })
                 }
+
                 seeMore()
+
 
                 addButton.addEventListener("click", () => {
 
@@ -101,7 +103,12 @@ const fetchIndex = () => {
                             showConfirmButton: false
                         })
                     }
-                    addTocart()
+                    try {
+                        addTocart()
+                    } catch (error) {
+
+                        container.innerHTML = "<h3 class = error> <b><i> Sorry , something has gone wrong please try later </h3>" + error.name + error.message
+                    }
                 })
 
                 // append des div
@@ -118,9 +125,16 @@ const fetchIndex = () => {
                 append(divButtons, addButton)
                 append(container, divCol)
             }
+        }
+        ).catch((error) => {
+            console.log(error);//for the developpers
+            container.innerHTML = " <h3 class = error><b><i>SORRY WE HAVE A PROBLEM IN OUR ATTEMPT TO CONNECT TO THE SERVER,PLEASE TRY AGAIN LATER...</h3>"
         })
 }
+
 fetchIndex()
+
+
 
 // recover my storage
 
