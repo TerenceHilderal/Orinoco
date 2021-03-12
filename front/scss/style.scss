@@ -1,284 +1,291 @@
-body{
-    margin: 0;
-    padding: 0;
-    width: auto;
-    height: 100vh;
-    background-color: #FFFFF3;
+body {
+	margin: 0;
+	padding: 0;
+	width: auto;
+	height: 100vh;
+	background-color: #fffff3;
 }
 
 /************************************************************ HEADER ************************************************************/
 
-.navbar{
-    background-color: #A593E0;
-    width: auto
+.navbar {
+	background-color: #a593e0;
+	width: auto;
 }
-.navbar-brand{
-    font-family: 'Finger Paint', cursive;
+.navbar-brand {
+	font-family: 'Finger Paint', cursive;
 }
-.navicon{
-    font-size: 2.5rem;
+.navicon {
+	font-size: 2.5rem;
 }
-.orinoco{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    height: 200px;
-    background-color: #A593E0;
+.orinoco {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: auto;
+	height: 200px;
+	background-color: #a593e0;
 }
-.size{
-    font-size: 7.5rem;
+.size {
+	font-size: 7.5rem;
 }
 
-.brand{
-    font-family: 'Finger Paint', cursive;
-    font-size: 5rem;
-    width: auto;
+.brand {
+	font-family: 'Finger Paint', cursive;
+	font-size: 5rem;
+	width: auto;
 }
-h3{
-    text-align: center;
+h3 {
+	text-align: center;
 }
 
 .icon-Capture-decran-2020-05-26-a-134723-3:before {
-    content: "\e900";
-    margin: 1rem;
-    background: -webkit-gradient(linear,left top,right bottom,from(orange),to(#9162f5));
-    -webkit-background-clip: text;
-    color: transparent; 
+	content: '\e900';
+	margin: 1rem;
+	background: -webkit-gradient(
+		linear,
+		left top,
+		right bottom,
+		from(orange),
+		to(#9162f5)
+	);
+	-webkit-background-clip: text;
+	color: transparent;
 }
 //*********************************************************** FOOTER***********************************************************
-.footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background:#566270;
-    height: 50px; 
-    bottom: 0;
-    position: fixed;
-    width: 100%;
+.footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	background-color: #a593e0;
+	bottom: 0;
+	position: fixed;
+	width: 100%;
 }
 
 /************************************************************ FEATURES ************************************************************/
 
-.feature{
-    background: #E0E3DA; 
-    .features{
-        text-align: center;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        
-        .icon{
-            color:#c87a5e;
-        }
-    }
+.feature {
+	background: #e0e3da;
+	.features {
+		text-align: center;
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+
+		.icon {
+			color: #c87a5e;
+		}
+	}
 }
 
 /* ***********************************************************PRESENTATION NEW SECTION ************************************************************/
 .new-section {
-    
-    p{
-        text-align: center;
-        font-size: 1.5rem;
-        margin-top: 2rem;
-    }
+	p {
+		text-align: center;
+		font-size: 1.5rem;
+		margin-top: 2rem;
+	}
 }
-#teddyHeader{
-    
-   display: block;
-   margin-left: auto;
-   margin-right: auto;  
+#teddyHeader {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
-.grad{
-    background: -webkit-gradient(linear,left top,right bottom,from(orange),to(#9162f5));
-    -webkit-background-clip: text;
-    color: transparent; 
+.grad {
+	background: -webkit-gradient(
+		linear,
+		left top,
+		right bottom,
+		from(orange),
+		to(#9162f5)
+	);
+	-webkit-background-clip: text;
+	color: transparent;
 }
 
-.btn-lg{
-    margin-left: 45%;
-    margin-top: 2rem;
+.btn-lg {
+	margin-left: 45%;
+	margin-top: 2rem;
 }
 
 /************************************************************ PRODUCTS PRESENTATION ************************************************************/
-h2{
-    font-family:'Finger Paint', cursive;
+h2 {
+	font-family: 'Finger Paint', cursive;
 }
-h4{
-    color: black;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-family: 'Finger Paint', cursive;
-}
-
-.card{
-    width: 480px;
-    height: 500px;
-    box-shadow: 12px 12px 2px 1px #E0E3DA;
-    padding: 1.5rem;
-    margin: auto;
-    margin-bottom: 3rem;
-
-    .card-text{
-        display: none;
-    }
-    
-    p{
-        padding-top: 0.5rem;
-    }
-}
-.card-image-top{
-    margin: auto;
-    width: 50%;
+h4 {
+	color: black;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-family: 'Finger Paint', cursive;
 }
 
-#teddiesContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    margin-bottom: 100px;
+.card {
+	width: 480px;
+	height: 500px;
+	box-shadow: 12px 12px 2px 1px #e0e3da;
+	padding: 1.5rem;
+	margin: auto;
+	margin-bottom: 3rem;
+
+	.card-text {
+		display: none;
+	}
+
+	p {
+		padding-top: 0.5rem;
+	}
 }
-select{
-    width: auto;
-    border-color: #FFE4C4;
+.card-image-top {
+	margin: auto;
+	width: 50%;
 }
 
-.buttonPosition{
-    display: flex;
-    justify-content: space-around;
+#teddiesContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: auto;
+	margin-bottom: 100px;
+}
+select {
+	width: auto;
+	border-color: #ffe4c4;
+}
+
+.buttonPosition {
+	display: flex;
+	justify-content: space-around;
 }
 
 /************************************************************* PRODUCTS PAGE *************************************************************/
 
 @mixin margin {
-    margin-top: 2rem;
+	margin-top: 2rem;
 }
 
-#choosenProduct{
-   height: auto;
-   padding: 2rem;
-   background-color:white;
-   box-shadow: 12px 12px 2px 1px #E0E3DA;
-   margin-bottom: 150px;
+#choosenProduct {
+	height: auto;
+	padding: 2rem;
+	background-color: white;
+	box-shadow: 12px 12px 2px 1px #e0e3da;
+	margin-bottom: 150px;
 }
 
-.teddyImg{
-    margin: auto;
-    width: 100%;
-    height: 80%;
+.teddyImg {
+	margin: auto;
+	width: 100%;
+	height: 80%;
 }
 
-.divButtons{
-    display: flex;
-    justify-content: space-around; 
+.divButtons {
+	display: flex;
+	justify-content: space-around;
 }
 
-.btn-outline-dark{
-    width: 25%;
-    @include margin
+.btn-outline-dark {
+	width: 25%;
+	@include margin;
 }
-.btn-outline-dark:hover{
-    background-color: #A593E0;
+.btn-outline-dark:hover {
+	background-color: #a593e0;
 }
-
 
 // ************************************************************CART PAGE************************************************************
 
-.imgInCart{
-    width: 60px;
-    height:60px;
-    margin-left: 1rem;
-    padding-top: 1rem;
+.imgInCart {
+	width: 60px;
+	height: 60px;
+	margin-left: 1rem;
+	padding-top: 1rem;
 }
 
-table{
-    width: 400px;
-    background-color: white;
-    padding: 1rem;
-        th{
-            width: 200px;
-            padding: 1rem;
-        }
-        td{
-            button{
-                margin-left: 40%;
-            }
-        }
+table {
+	width: 400px;
+	background-color: white;
+	padding: 1rem;
+	th {
+		width: 200px;
+		padding: 1rem;
+	}
+	td {
+		button {
+			margin-left: 40%;
+		}
+	}
 }
-#showform{
-    display: none;
+#showform {
+	display: none;
 }
 // ***********************************CART***********************************************************
 
-.inCartImage{
-    width: 60px;
-    height: 60px;
+.inCartImage {
+	width: 60px;
+	height: 60px;
 }
-#order{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#order {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-#hideafterconfirmation{
-    margin-bottom: 100px;
+#hideafterconfirmation {
+	margin-bottom: 100px;
 }
-#orderForm{
-    margin-bottom: 100px;
+#orderForm {
+	margin-bottom: 100px;
 }
-#btnSubmit{
-    color: black;
-    border-color: black;
-    background: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
+#btnSubmit {
+	color: black;
+	border-color: black;
+	background: none;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 25%;
 }
-#btnSubmit:hover{
-    background: #A593E0;
-    color: white;
+#btnSubmit:hover {
+	background: #a593e0;
+	color: white;
 }
-.checkout{
-    margin-top: 1rem;
+.checkout {
+	margin-top: 1rem;
 }
 //*********************************************************** FORM VALIDATION***********************************************************
 
 .form-group.error input {
-    border: 1px solid red;
+	border: 1px solid red;
 }
-.form-group{
-    .error label{
-        color: red;
-    }
+.form-group {
+	.error label {
+		color: red;
+	}
 }
 
 .form-group.error::after {
-    content: 'Invalid input, please try again';
-    display: block;
-    color: red;
-    padding: 5px 0;
-    font-size: .9rem;
+	content: 'Invalid input, please try again';
+	display: block;
+	color: red;
+	padding: 5px 0;
+	font-size: 0.9rem;
 }
 // footer
-#contact{
-    text-align: center;
-    padding-top: 2rem;
+#contact {
+	text-align: center;
+	padding-top: 2rem;
 }
-
 
 //*********************************************************** CONFIRMATION PAGE ***********************************************************
 
-#greetingUser{
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    height: auto;
-    background-color:white;
-    padding: 0.8rem; 
-    margin-top: 100px;
-    box-shadow: 12px 12px 2px 2px #E0E3DA;
-    border-radius: 5px;
- }
- 
+#greetingUser {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	height: auto;
+	background-color: white;
+	padding: 0.8rem;
+	margin-top: 100px;
+	box-shadow: 12px 12px 2px 2px #e0e3da;
+	border-radius: 5px;
+}
