@@ -1,6 +1,6 @@
 # Orinoco #
 
-This is the back end server for Project 5 of the Junior Web Developer path.
+This project is a fictitious e-commerce site. Made in vanilla javascript, it allowed me to learn and improve myself in javascript, with also the use of localStorage, I took care of all the frontend part.
 
 ### Prerequisites ###
 
@@ -13,3 +13,8 @@ can then run the server with `node server`.
 The server should run on `localhost` with default port `3000`. If the
 server runs on another port for any reason, this is printed to the
 console when the server starts, e.g. `Listening on port 3001`.
+
+### Frontend ###
+
+You just have to clone the repo , then enter node server or nodemon if you have it , once the server is on the only thing you have to do is going to :
+https://terencehilderal.github.io/Orinoco/index.html
